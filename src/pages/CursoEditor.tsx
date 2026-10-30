@@ -42,12 +42,12 @@ export function CursosMaestro() {
     }
     return (
         <div className="max-w-5xl mx-auto space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                     <h1 className="font-serif text-3xl text-graphite">Mis Cursos</h1>
                     <p className="text-graphite/50 text-sm mt-1">{misCursos.length} curso{misCursos.length !== 1 ? 's' : ''}</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                     {/* SP2: AI Course Generator */}
                     <button
                         onClick={() => setShowAIGenerator(true)}

@@ -89,6 +89,17 @@ Las funciones se exportan desde `functions/src/index.ts`. Entre ellas se encuent
 
 Las claves de Anthropic pertenecen únicamente al servidor. En producción, configura secretos mediante Firebase/Google Cloud Secret Manager y vincúlalos a las funciones que los usan. No guardes claves en el frontend, el repositorio, capturas o archivos `.env.example`.
 
+## Revisión desde el celular
+
+Guía y estado de configuración: [Flujo móvil y despliegue](docs/FLUJO_MOVIL_Y_DESPLIEGUE.md).
+
+```bash
+npm run dev:review
+npm run build:review
+```
+
+El modo review abre las pantallas con datos de ejemplo en este navegador y no usa Firebase/IA reales. Para validar permisos y servicios se requiere Firebase DEV. El build normal excluye el adaptador de revisión.
+
 ## Estado y límites conocidos
 
 Contraste de código, correcciones y evidencia: [Estado actual — 30 oct 2026](docs/ESTADO_ACTUAL_2026-10-30.md).
