@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 /**
  * SP2 — Modal de Generación de Cursos desde Lenguaje Natural
  *
@@ -29,7 +30,7 @@ export function CourseGeneratorModal({ maestroId, onClose }: Props) {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${AI_CLAUDE_URL}/generateCourseFromTopicFn`, {
+      const res = await authenticatedFetch(`${AI_CLAUDE_URL}/generateCourseFromTopicFn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -53,7 +54,13 @@ export function CourseGeneratorModal({ maestroId, onClose }: Props) {
     }
   }
 
-  if (!AI_CLAUDE_URL) return null
+  if (!AI_CLAUDE_URL) return <div role="dialog" aria-label="Generación con IA" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-graphite/40">
+    <div className="bg-white rounded-2xl p-6 max-w-md space-y-4">
+      <h2 className="font-serif text-xl">Generación con IA</h2>
+      <p>La generación de cursos con IA no está habilitada en esta versión. Puedes crear un curso manualmente y revisar los contenidos de ejemplo.</p>
+      <button className="btn-primary" onClick={onClose}>Cerrar</button>
+    </div>
+  </div>
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-graphite/40 backdrop-blur-sm">

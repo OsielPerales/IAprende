@@ -329,7 +329,7 @@ export const bloquesIA: Bloque[] = [
             titulo: 'Simulador de Tokens',
             instrucciones: 'Escribe cualquier texto y observa cómo la IA lo divide en tokens. Los tokens son las unidades básicas que procesa el modelo.',
             altura_px: 310,
-            html: `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+            html: String.raw`<!DOCTYPE html><html><head><meta charset="utf-8"><style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#F9F9F7;padding:16px}
 h3{color:#2A4B7C;font-size:15px;margin-bottom:4px}
@@ -785,7 +785,7 @@ function check(val){
             titulo: 'Validador de Instrucción Proactiva',
             instrucciones: 'Escribe tu INSTRUCCIÓN y el validador detectará si comienza con un verbo de acción fuerte o si usa lenguaje débil.',
             altura_px: 380,
-            html: `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+            html: String.raw`<!DOCTYPE html><html><head><meta charset="utf-8"><style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#F9F9F7;padding:16px}
 h3{color:#E07A5F;font-size:15px;margin-bottom:4px}

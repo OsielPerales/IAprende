@@ -1,3 +1,4 @@
+import { authenticatedFetch } from './http'
 /**
  * iAprende — AI Service
  * 
@@ -60,7 +61,7 @@ export async function askTutor(
         return getMockTutorResponse(question)
     }
 
-    const response = await fetch(AI_PROXY_URL, {
+    const response = await authenticatedFetch(AI_PROXY_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -174,7 +175,7 @@ export async function generateQuiz(
         }
     }
 
-    const response = await fetch(AI_PROXY_URL, {
+    const response = await authenticatedFetch(AI_PROXY_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -242,7 +243,7 @@ export async function generateTLDR(htmlContent: string): Promise<string[]> {
     // Strip HTML tags for the prompt
     const text = htmlContent.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 
-    const response = await fetch(AI_PROXY_URL, {
+    const response = await authenticatedFetch(AI_PROXY_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -365,7 +366,7 @@ export async function generateSimulator(
         }
     }
 
-    const response = await fetch(AI_PROXY_URL, {
+    const response = await authenticatedFetch(AI_PROXY_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -429,7 +430,7 @@ export async function getAdaptiveRecommendation(
     // SP5: Live mode — call Claude Cloud Function for personalized recommendation
     if (AI_CLAUDE_URL && alumnoId && cursoId) {
         try {
-            const res = await fetch(`${AI_CLAUDE_URL}/getPersonalizedLearningPathFn`, {
+            const res = await authenticatedFetch(`${AI_CLAUDE_URL}/getPersonalizedLearningPathFn`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ alumnoId, cursoId, recentScore: score, courseTitle, quizTitle }),

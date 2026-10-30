@@ -1,3 +1,5 @@
+> **Antecedente histórico.** Los comandos, ejemplos de Rules y configuración de este documento no describen la versión corregida. No copies sus reglas o bootstrap de roles a producción. Para el estado y verificación actuales consulta [docs/ESTADO_ACTUAL_2026-10-30.md](docs/ESTADO_ACTUAL_2026-10-30.md), [seguridad](docs/SEGURIDAD.md) y [operación](docs/OPERACION.md).
+
 > **Archivo de referencia histórico (abril de 2026).** Su contenido y pasos de consola no necesariamente reflejan el código actual. No ejecutes instrucciones de permisos, promoción de roles ni despliegue sin validarlas con `docs/SEGURIDAD.md` y el entorno vigente. Se retiraron valores de configuración sensibles de esta copia.
 
 # AUDITORÍA Y PUESTA EN MARCHA — iAprende

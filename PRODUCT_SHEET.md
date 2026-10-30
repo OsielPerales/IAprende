@@ -1,7 +1,9 @@
 # iAprende — Hoja de Producto & Documento Técnico Interno
-**Versión:** 1.0 · **Fecha:** 2026-04-19 · **Clasificación:** Interno
+**Versión:** 1.0 · **Revisión de código:** 2026-10-30 · **Clasificación:** Interno
 
 ---
+
+> Estado verificado en código y pruebas locales; no acredita despliegue ni servicio productivo. Consulta [el contraste y límites actuales](docs/ESTADO_ACTUAL_2026-10-30.md).
 
 ## 1. RESUMEN EJECUTIVO
 
@@ -155,8 +157,8 @@ Login
 | 9 | Tarjetas de memorización | `tarjetas_flip` | Flip cards para estudio | — |
 | 10 | Tabla interactiva | `tabla_editable` | Tabla editable en vivo | — |
 | 11 | Checklist | `checklist` | Lista de verificación completable | — |
-| 12 | Campo libre | `campo_libre` | Respuesta abierta de texto | Auto-calificación SP1 |
-| 13 | Generador de prompts | `simulador_prompt` | Construye prompts para Claude | SP1 integrado |
+| 12 | Campo libre | `campo_libre` | Respuesta abierta guardada en progreso | — |
+| 13 | Generador de prompts | `simulador_prompt` | Construye y evalúa prompts (0–5) | `evaluatePromptFn`, `executePromptFn` |
 | 14 | Caso ético | `caso_etico` | Dilema ético colaborativo | — |
 | 15 | Mapa conceptual | `mapa_ecosistema` | Mapa visual del ecosistema IA | — |
 | 16 | Resumen personal | `resumen_personal` | Resumen auto-rellenable por alumno | — |
@@ -201,17 +203,17 @@ Login
 - **Output:** `{ nivel, mensaje, accion, siguienteTema? }`
 
 ### SP6 — Notificaciones Inteligentes (Digest Diario)
-- **Qué hace:** Cloud Scheduler ejecuta diariamente (7 AM hora México) una función que genera notificaciones personalizadas: calificaciones disponibles, nuevos cursos asignados, recordatorios de pendientes, análisis de desempeño.
+- **Qué hace:** Cloud Scheduler ejecuta diariamente (7 AM hora México) una función que genera un resumen para maestros con entregas recientes y pendientes. Usa un identificador por instructor/día para evitar notificaciones duplicadas.
 - **Cuándo se activa:** Automáticamente cada día via Cloud Scheduler.
-- **Modelo:** N/A (lógica programada + datos Firestore)
+- **Modelo:** `claude-haiku-4-5-20251001` con datos Firestore
 - **Output:** Documentos en colección `notificaciones`, visibles en `NotificationsPanel`
 
 ### SP7 — Traducción y Simplificación de Contenido
 - **Qué hace:** Traduce o simplifica el contenido de un bloque (HTML) al idioma o nivel de complejidad deseado, permitiendo personalizar la accesibilidad del material.
-- **Cuándo se activa:** Acción en el editor de bloques o vía MCP.
+- **Cuándo se activa:** Acción de traducción/simplificación en el visor de texto. No hay tool MCP dedicada.
 - **Modelo:** `claude-haiku-4-5-20251001`
 - **Endpoint:** `POST /translateBlockFn`
-- **Output:** `{ contenidoOriginal, contenidoTraducido, simplificacionAplicada }`
+- **Output:** `{ html, note }`
 
 ---
 
@@ -220,7 +222,7 @@ Login
 iAprende expone un **Servidor MCP (Model Context Protocol)** que permite a Claude Desktop y otros clientes MCP operar directamente sobre la plataforma. Existen dos modos de servidor:
 
 ### 7.1 Servidor MCP Standalone (Claude Desktop · stdio)
-**Ruta:** `mcp-server/src/index.ts`  
+**Ruta:** `mcp-server/src/index.ts`
 **Transporte:** `stdio` (procesos locales, pipes)
 
 **Configuración en `claude_desktop_config.json`:**
@@ -239,17 +241,17 @@ iAprende expone un **Servidor MCP (Model Context Protocol)** que permite a Claud
 }
 ```
 
-#### Tools Disponibles (7 tools)
+#### Tools disponibles por stdio (7 tools)
 
 | Tool | Nombre | Descripción | Parámetros clave |
 |---|---|---|---|
 | 1 | `get_platform_stats` | Estadísticas generales de la plataforma: total de usuarios, cursos, grupos y respuestas pendientes | — |
-| 2 | `list_pending_grades` | Lista todas las respuestas abiertas sin calificar, con datos del alumno y bloque | `grupoId?` |
-| 3 | `get_group_roster` | Devuelve el roster completo de un grupo con nombre, email y desempeño promedio de cada alumno | `grupoId` |
-| 4 | `auto_grade_open_answer` | Califica automáticamente una respuesta abierta usando Claude Sonnet, devuelve score + feedback | `respuestaId`, `rubric?` |
-| 5 | `answer_instructor_query` | Responde en lenguaje natural preguntas del instructor sobre el desempeño de su clase | `query`, `maestroId` |
-| 6 | `generate_course_from_topic` | Genera y persiste en Firestore un curso completo a partir de un tema e instrucciones | `topic`, `industryContext`, `maestroId`, `numBloques?` |
-| 7 | `submit_grade` | Registra una calificación en Firestore para una respuesta específica | `respuestaId`, `score`, `feedback?` |
+| 2 | `list_pending_grades` | Lista todas las respuestas abiertas sin calificar, con datos del alumno y bloque | `grupo_id?` |
+| 3 | `get_group_roster` | Devuelve el roster completo de un grupo con nombre, email y desempeño promedio de cada alumno | `grupo_id` |
+| 4 | `auto_grade_open_answer` | Califica automáticamente una respuesta abierta usando Claude Sonnet, devuelve score + feedback | `respuesta_id`, `rubric?` |
+| 5 | `answer_instructor_query` | Responde en lenguaje natural preguntas del instructor sobre el desempeño de su clase | `query`, `maestro_id` |
+| 6 | `generate_course_from_topic` | Genera y persiste en Firestore un curso completo a partir de un tema e instrucciones | `topic`, `industry_context`, `maestro_id`, `num_bloques?` |
+| 7 | `submit_grade` | Registra una calificación en Firestore para una respuesta específica | `respuesta_id`, `calificacion`, `feedback?` |
 
 #### Resources Disponibles (2 resources)
 
@@ -259,11 +261,17 @@ iAprende expone un **Servidor MCP (Model Context Protocol)** que permite a Claud
 | 2 | `iaprende://respuestas/pending` | Lista de respuestas pendientes de calificación | JSON |
 
 ### 7.2 Servidor MCP via HTTP (Cloud Functions)
-**Ruta:** `functions/src/mcp/mcpHttpFunction.ts`  
-**Transporte:** HTTP + SSE (Server-Sent Events)  
+**Ruta:** `functions/src/mcp/mcpHttpFunction.ts`
+**Transporte:** Streamable HTTP stateless, respuesta JSON
 **Endpoint:** `POST https://us-central1-iaprende-1415d.cloudfunctions.net/mcpServer`
 
-Expone las mismas tools y resources del servidor standalone, accesibles desde clientes web o integraciones sin acceso a stdio.
+Requiere ID token Firebase con perfil admin. El cliente debe enviar Authorization y renovar el token. No implementa OAuth de terceros. Expone **14 herramientas**, un catálogo distinto al stdio:
+
+- Lectura: `get_platform_stats`, `get_group_roster`, `get_student_performance`, `get_course_analytics`, `list_pending_grades`, `get_course_structure`.
+- IA: `auto_grade_open_answer`, `generate_knowledge_gap_report`, `answer_instructor_query`, `generate_course_from_topic`.
+- Escritura: `submit_grade`, `create_course`, `add_bloque_to_course`, `enroll_student`.
+
+Ambos transportes publican los dos recursos `iaprende://platform/stats` y `iaprende://respuestas/pending`.
 
 ---
 
@@ -359,7 +367,8 @@ fetch(VITE_AI_PROXY_URL, {
 | **Autorización Firestore** | Security Rules basadas en rol del usuario |
 | **Escritura Analytics** | Solo accesible por Cloud Functions (no cliente) |
 | **Simuladores HTML** | Ejecutan en `<iframe sandbox>` — sin acceso al DOM padre |
-| **Roles** | Verificados en Firestore, no en el JWT |
+| **Roles** | Perfil protegido en Firestore; registro solo alumno; cambios de rol por admin |
+| **MCP HTTP** | Solo admin con ID token Firebase y cuota; stdio usa IAM local |
 
 ---
 
@@ -378,7 +387,6 @@ fetch(VITE_AI_PROXY_URL, {
 | `VITE_AI_PROXY_URL` | URL del proxy IA (vacío = Modo Demo) |
 | `VITE_AI_MODEL` | Modelo para el proxy (default: gpt-4o-mini) |
 | `VITE_AI_CLAUDE_URL` | Base URL de Cloud Functions Claude (SP1-SP7) |
-| `VITE_ADMIN_EMAIL` | Email que recibe rol admin al registrarse |
 | `VITE_MAIN_APP_URL` | URL del sitio principal |
 
 ### Backend (Cloud Functions / MCP Server — solo servidor)
@@ -524,7 +532,7 @@ cd mcp-server && npm run build
 
 ## 13. ESTADO ACTUAL Y PRÓXIMOS PASOS
 
-### Implementado (v1.0)
+### Implementado en código (requiere validación productiva)
 - [x] Autenticación completa (email + Google)
 - [x] 3 roles con permisos diferenciados
 - [x] 16 tipos de bloques de contenido
@@ -541,6 +549,10 @@ cd mcp-server && npm run build
 - [x] Sistema de diseño Humanista UI
 
 ### Pendiente / Roadmap
+- [ ] Validación de staging con Auth, secretos, IAM y proveedor IA reales
+- [ ] Aislamiento por institución/instructor
+- [ ] Pantalla `/admin/config`
+- [ ] Notificaciones específicas de alumnos (el digest actual es para maestros)
 - [ ] Notificaciones push (Firebase Cloud Messaging)
 - [ ] Certificados de finalización
 - [ ] Integración SSO empresarial (SAML/LDAP)
@@ -552,5 +564,5 @@ cd mcp-server && npm run build
 
 ---
 
-*Documento generado automáticamente por análisis de código fuente — 2026-04-19*  
+*Documento actualizado por contraste de código y pruebas locales — 2026-10-30*
 *iAprende v1.0 · Diseño Humanista UI · Powered by Claude AI*

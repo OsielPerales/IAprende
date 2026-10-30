@@ -8,14 +8,8 @@ import {
     GoogleAuthProvider,
     signInWithPopup
 } from 'firebase/auth'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
-import type { AppUser, UserRole } from '../types'
-
-const ADMIN_BOOTSTRAP_EMAIL = import.meta.env.VITE_ADMIN_EMAIL ?? 'admin@iaprende.com'
-
-function resolveBootstrapRole(email: string | null | undefined): UserRole {
-    return email === ADMIN_BOOTSTRAP_EMAIL ? 'admin' : 'alumno'
-}
+import { doc, getDoc, runTransaction } from 'firebase/firestore'
+import type { AppUser } from '../types'
 
 interface AuthContextType {
     user: AppUser | null
@@ -35,6 +29,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
             if (firebaseUser) {
+                setLoading(true)
+                setUser(null)
                 fetchProfile(firebaseUser)
             } else {
                 setUser(null)
@@ -51,7 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const docSnap = await getDoc(docRef)
             
             if (docSnap.exists()) {
-                setUser(docSnap.data() as AppUser)
+                if (auth.currentUser?.uid === firebaseUser.uid) setUser({ ...docSnap.data(), id: firebaseUser.uid } as AppUser)
             } else {
                 console.log('Documento no encontrado, creando documento base...')
                 const appUser: AppUser = {
@@ -59,17 +55,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                     email: firebaseUser.email || '',
                     nombre: firebaseUser.displayName?.split(' ')[0] || 'Usuario',
                     apellido: firebaseUser.displayName?.split(' ').slice(1).join(' ') || '',
-                    rol: resolveBootstrapRole(firebaseUser.email),
+                    rol: 'alumno',
                     created_at: new Date().toISOString()
                 }
-                await setDoc(docRef, appUser)
-                setUser(appUser)
+                const profile = await runTransaction(db, async tx => {
+                    const current = await tx.get(docRef)
+                    if (current.exists()) return { ...current.data(), id: firebaseUser.uid } as AppUser
+                    tx.set(docRef, appUser)
+                    return appUser
+                })
+                if (auth.currentUser?.uid === firebaseUser.uid) setUser(profile)
             }
         } catch (error) {
-            console.error('Error fetching/creating profile in Firestore:', error)
-            alert('Error en base de datos: Asegúrate de haber habilitado Firestore Database en tu consola de Firebase y que las reglas de seguridad permitan escritura/lectura.')
+            if (auth.currentUser?.uid === firebaseUser.uid) setUser(null)
+            console.error('No se pudo cargar el perfil. Intenta iniciar sesión de nuevo.')
         } finally {
-            setLoading(false)
+            if (auth.currentUser?.uid === firebaseUser.uid) setLoading(false)
         }
     }
 
@@ -96,11 +97,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                     email,
                     nombre,
                     apellido,
-                    rol: resolveBootstrapRole(email),
+                    rol: 'alumno',
                     created_at: new Date().toISOString()
                 }
-                await setDoc(doc(db, 'usuarios', firebaseUser.uid), appUser)
-                setUser(appUser)
+                const ref = doc(db, 'usuarios', firebaseUser.uid)
+                const profile = await runTransaction(db, async tx => {
+                    const current = await tx.get(ref)
+                    if (current.exists()) {
+                        tx.update(ref, { nombre, apellido })
+                        return { ...current.data(), id: firebaseUser.uid, nombre, apellido } as AppUser
+                    }
+                    tx.set(ref, appUser)
+                    return appUser
+                })
+                if (auth.currentUser?.uid === firebaseUser.uid) setUser(profile)
             }
             return { error: null }
         } catch (error: any) {

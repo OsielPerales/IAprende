@@ -1,53 +1,45 @@
 # Seguridad y datos sensibles
 
-## Secretos del repositorio
+Estado del código: revisión del 30 de octubre de 2026. Evidencia y límites en [ESTADO_ACTUAL_2026-10-30.md](ESTADO_ACTUAL_2026-10-30.md). Esta revisión no acredita un despliegue de producción.
 
-Nunca guardes en Git:
+## Identidad y roles
 
-- Claves de proveedores de IA, tokens o contraseñas.
-- JSON de cuentas de servicio, llaves privadas o variables serializadas con credenciales.
-- Archivos `.env`, `.env.local` o cualquier variante con valores reales.
-- Exportaciones con información personal de alumnos, resultados o datos de Firebase.
+- Registro por correo y Google: todos los perfiles nuevos nacen como `alumno`. Se eliminó el bootstrap por `VITE_ADMIN_EMAIL`.
+- `usuarios/{uid}` conserva `id`, correo y rol ante ediciones del propio usuario. El alumno puede modificar nombre, apellido y avatar; solo un administrador puede cambiar roles.
+- El primer administrador debe provisionarse desde Firebase Console o una herramienta Admin SDK de confianza, después de verificar el UID en Auth. Los siguientes cambios de rol pueden hacerse desde Gestión de usuarios. Inicia sesión de nuevo después de cambiar un rol.
+- Las Functions HTTP verifican Firebase ID token con comprobación de revocación, rechazan cuentas anónimas y consultan el rol en el perfil protegido. Nunca aceptan el rol del navegador.
+- La aplicación es de una institución: maestros y administradores mantienen acceso institucional amplio a cursos, grupos, respuestas y analítica. No hay aislamiento por empresa ni por instructor en las Rules. Los perfiles y las respuestas colaborativas de casos éticos siguen siendo legibles por cuentas registradas. Este modelo debe revisarse antes de alojar instituciones independientes.
 
-`.gitignore` excluye `.env*` (salvo `.env.example`) y archivos Firebase Admin con nombre `*-firebase-adminsdk-*.json`. Mantén los secretos en Secret Manager, variables de entorno protegidas o un almacén local no versionado. `.env.example` debe contener exclusivamente marcadores vacíos o de demostración.
+## Endpoints HTTP
 
-Si una clave se incluyó accidentalmente en un commit, borrarla en un commit posterior no revoca la exposición: desactívala/rotala inmediatamente en su proveedor, limita IAM, revisa logs y elimina la clave de todo historial publicado mediante el procedimiento aprobado para ese repositorio.
+Todas las operaciones HTTP usan `Authorization: Bearer <Firebase ID token>`; el cliente obtiene el token actual en `src/lib/http.ts`. Solo se admite POST, con OPTIONS para preflight. CORS permite Authorization; no sustituye la autenticación.
 
-## Configuración Firebase del navegador
+| Operación | Permiso |
+|---|---|
+| `aiProxy`, `translateBlockFn`, `evaluatePromptFn`, `executePromptFn` | Cuenta registrada con perfil válido |
+| `autoGradeRespuestaFn`, `generateCourseFromTopicFn`, `queryClassDataFn` | Maestro o administrador |
+| Generación/consulta con `maestroId` | Identidad propia; un admin puede seleccionar otro instructor |
+| `detectKnowledgeGapsFn`, `getPersonalizedLearningPathFn` | Alumno propio o personal docente/administrador |
+| `mcpServer` HTTP | Solo administrador; sus herramientas/recursos son globales |
 
-Los valores `VITE_*` se incorporan al bundle y son visibles al público. La configuración Firebase web no es un secreto de servidor; la protección depende de reglas correctas, Auth, restricciones de API aplicables, límites y controles contra abuso. Nunca pongas una clave privada de Admin ni una clave Anthropic en una variable `VITE_*`.
+Los cuerpos HTTP se limitan a 64 KiB; los handlers validan identificadores, longitudes, rangos y enumeraciones antes de llamar al modelo. La cuota persistente compartida entre endpoints y MCP es de 20 solicitudes por minuto y 200 por día UTC por UID (`ai_usage`, transacción Admin SDK). Los errores inesperados no revelan mensajes del proveedor, tokens ni contenido privado. El digest programado usa la identidad administrada de Cloud Scheduler y queda fuera de esa cuota de usuario.
 
-## Reglas de Firestore
+Las cuotas por cuenta no reemplazan presupuestos del proveedor ni controles contra creación masiva de cuentas. MCP stdio se ejecuta con credenciales administrativas locales: solo en máquinas y clientes de confianza; no tiene la cuota del endpoint HTTP. El MCP HTTP no implementa un flujo OAuth para terceros; el cliente debe poder enviar y renovar el ID token Firebase.
 
-El archivo `firestore.rules` limita operaciones por rol y propietario en varias colecciones. Antes de usar con usuarios reales, revisa como mínimo:
+## Reglas y cliente Firestore
 
-- **Perfil:** un usuario puede actualizar su propio documento. La regla actual no limita los campos modificables, por lo que el propietario podría intentar cambiar `rol` desde el cliente. Protege el campo de rol con validación de campos/valores o Custom Claims.
-- **Respuestas:** la creación liga `alumno_id` al usuario autenticado, pero valida también los campos permitidos y transiciones de estado/calificación.
-- **Casos éticos:** la regla actual permite crear y actualizar a cualquier autenticado; confirma que el identificador del autor se valida y que la lectura amplia es aceptable.
-- **Solicitudes:** valida que alumno, grupo, estado y campos no se puedan falsificar mediante una actualización permitida.
-- **Lectura general:** las reglas permiten lecturas autenticadas amplias para cursos, bloques y grupos, y el perfil es legible por usuarios autenticados. Revisa datos expuestos y limita consultas/documentos según el modelo real.
-- **Admin SDK:** Cloud Functions y scripts con Firebase Admin omiten reglas Firestore. Cada endpoint debe comprobar Auth, rol, propietario, formato y autorización del lado servidor.
+- El alumno consulta sus respuestas y solicitudes con filtros por UID; la analítica usa su documento individual. Las notificaciones siempre se filtran por destinatario. Al cerrar sesión se vacía el caché de Zustand.
+- Las respuestas se crean sin calificación ni retroalimentación docente. Solo personal docente/administrador puede calificar; se valida el rango 0–100.
+- Marcar una notificación como leída cambia únicamente `leida` mediante `diff().affectedKeys()`.
+- Progreso, casos éticos y solicitudes preservan propietario y referencias. Solo personal docente decide inscripciones; el alumno puede reenviar una solicitud rechazada.
+- Analytics y cuotas se escriben exclusivamente mediante Admin SDK. Las Rules no protegen operaciones Admin SDK: los endpoints deben aplicar sus propios controles.
 
-Las reglas se comportan de forma aditiva por coincidencia de `allow`; una regla permisiva puede abrir acceso aunque otra sea más restrictiva. Valida cambios en Emulator Suite antes de desplegarlos.
+Pruebas reproducibles: `npm test` (contratos HTTP, cliente y contenido) y `npm run test:rules` (Firestore Emulator, proyecto ficticio `demo-iaprende`). No apuntan a datos de producción. Las notas locales de progreso no equivalen a calificaciones oficiales ni a certificados.
 
-## Endpoints HTTP y CORS
+## Secretos
 
-`functions/src/index.ts` establece CORS en varios endpoints y acepta solicitudes POST. CORS es una política del navegador; no autentica a la persona ni impide que un cliente alternativo invoque el endpoint. Antes de exponer operaciones que leen/modifican datos o consumen IA:
+Nunca guardes claves IA, tokens, contraseñas, cuentas de servicio ni exportaciones de alumnos en Git. `.env.example` contiene solo marcadores. Los valores `VITE_*` se incorporan al JavaScript público; la configuración web Firebase no es un secreto de servidor.
 
-1. Verifica Firebase ID token en servidor.
-2. Valida rol, propiedad de registros y permisos para la acción solicitada.
-3. Valida esquema, longitud, cuotas, frecuencia y tamaño de las solicitudes.
-4. Aplica límites de gasto/abuso y evita revelar mensajes internos de error.
-5. Registra metadatos operativos mínimos, sin secretos ni contenido personal innecesario.
+Configura `ANTHROPIC_API_KEY` con Firebase Secrets/Secret Manager. Las Functions que consumen IA vinculan explícitamente ese secreto en sus opciones. Firebase Admin en Cloud Functions usa credenciales administradas; MCP local puede usar `GOOGLE_APPLICATION_CREDENTIALS` o `FIREBASE_SERVICE_ACCOUNT_JSON` en base64. Base64 no cifra una clave.
 
-## Protección de información educativa
-
-Las respuestas, calificaciones, progreso, grupos y análisis pueden ser datos personales o educativos. Minimiza el envío a proveedores IA, comunica su tratamiento, aplica controles de acceso y retención y revisa las obligaciones que correspondan a la organización y jurisdicción. No uses datos reales al probar sin autorización.
-
-## Revisión antes de publicar
-
-- Inspecciona los archivos que entrarán al commit y los archivos ignorados que podrían contener secretos.
-- Ejecuta un escaneo de claves antes de publicar y revisa también documentos, logs, capturas y muestras.
-- Verifica que no se incluyan `.env`, archivos Admin, `node_modules`, `dist` o artefactos de compilación innecesarios.
-- Revisa dependencias y sus avisos de seguridad con el proceso que use tu equipo.
-- Vuelve a auditar reglas, Functions, IAM y dominios autorizados antes de abrir el servicio al público.
+Si se expone una credencial, revócala/rota en el proveedor y revisa el historial y logs; borrar el último archivo no revoca la clave. No se ejecutaron llamadas pagadas a IA, cambios de IAM ni despliegues en esta revisión.

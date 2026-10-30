@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 /**
  * SP3 — Analytics Chat para Maestros
  *
@@ -46,7 +47,7 @@ export function AnalyticsChat({ maestroId }: Props) {
     setLoading(true)
 
     try {
-      const res = await fetch(`${AI_CLAUDE_URL}/queryClassDataFn`, {
+      const res = await authenticatedFetch(`${AI_CLAUDE_URL}/queryClassDataFn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: query.trim(), maestroId }),

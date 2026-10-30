@@ -23,14 +23,14 @@ Consulta [la arquitectura](docs/ARQUITECTURA.md), [la instalación](docs/INSTALA
 | Interfaz | React, TypeScript, Vite, Tailwind CSS 4, React Router |
 | Estado | Zustand y contexto de autenticación |
 | Identidad y datos | Firebase Authentication y Cloud Firestore |
-| Backend | Firebase Cloud Functions v2, Node.js 20, TypeScript |
+| Backend | Firebase Cloud Functions v2, Node.js 22, TypeScript |
 | IA | Anthropic SDK en servidor; adaptador compatible con formato OpenAI |
 | Integración de asistentes | Model Context Protocol (MCP), SDK oficial |
 | Alojamiento | Firebase Hosting |
 
 ## Inicio rápido
 
-Requisitos: Node.js 20 recomendado (Cloud Functions requiere Node 20), npm y acceso a un proyecto Firebase propio.
+Requisitos: Node.js 22 para frontend, herramientas y Cloud Functions, npm y acceso a un proyecto Firebase propio.
 
 ```bash
 npm ci
@@ -89,10 +89,34 @@ Las funciones se exportan desde `functions/src/index.ts`. Entre ellas se encuent
 
 Las claves de Anthropic pertenecen únicamente al servidor. En producción, configura secretos mediante Firebase/Google Cloud Secret Manager y vincúlalos a las funciones que los usan. No guardes claves en el frontend, el repositorio, capturas o archivos `.env.example`.
 
+## Revisión desde el celular
+
+Guía y estado de configuración: [Flujo móvil y despliegue](docs/FLUJO_MOVIL_Y_DESPLIEGUE.md).
+
+```bash
+npm run dev:review
+npm run build:review
+```
+
+El modo review abre las pantallas con datos de ejemplo en este navegador y no usa Firebase/IA reales. Para validar permisos y servicios se requiere Firebase DEV. El build normal excluye el adaptador de revisión.
+
 ## Estado y límites conocidos
 
+Contraste de código, correcciones y evidencia: [Estado actual — 30 oct 2026](docs/ESTADO_ACTUAL_2026-10-30.md).
+
+Verificación reproducible (requiere instalar los tres paquetes):
+
+```bash
+npm run check
+npm run test:rules
+```
+
+`test:rules` usa Firestore Emulator y el proyecto ficticio `demo-iaprende`; requiere Java 17+ (Java 21 en CI).
+
+
 - El frontend y backend están separados en raíz y `functions/`; el servidor MCP stdio es un paquete independiente.
-- Las llamadas HTTP de Functions del código actual aplican CORS, pero no todas validan identidad Firebase en el propio endpoint. Antes de exponerlas a usuarios o datos reales, revisa autenticación, autorización, validación de entrada, cuotas y costos según [seguridad](docs/SEGURIDAD.md).
+- Todas las llamadas HTTP de IA verifican Firebase ID token y perfil; MCP HTTP requiere admin. Registro crea alumnos; el primer admin se provisiona desde un entorno de confianza. Las Rules y Functions nuevas deben desplegarse explícitamente para tener efecto; consulta [seguridad](docs/SEGURIDAD.md).
+- La aplicación actual es de una sola institución: maestros tienen permisos institucionales amplios. No hay aislamiento multiempresa. `/admin/config` sigue siendo una pantalla pendiente.
 - No se publica un conjunto de datos de muestra ni credenciales de Firebase. Para una instalación nueva se requiere configurar Auth, Firestore, secretos y reglas en un proyecto propio.
 - Los archivos PDF/DOCX de cursos son materiales del producto y no son necesarios para compilar el código.
 

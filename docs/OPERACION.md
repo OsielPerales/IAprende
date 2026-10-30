@@ -9,7 +9,9 @@
 5. Publica primero en un proyecto/canal de pruebas y verifica login, lectura/escritura, navegación y llamadas de IA.
 6. Despliega producción solo al proyecto intencional y conserva el resultado del build/logs.
 
-No se declara una suite de pruebas automatizadas en los scripts actuales de `package.json`. No interpretes un build correcto como una prueba funcional del servicio desplegado.
+Antes de publicar ejecuta `npm run check` y `npm run test:rules`. El workflow `.github/workflows/verify.yml` ejecuta ambos en PR y manualmente, sin credenciales productivas ni deploy. Compilación y emulador no sustituyen una prueba funcional del servicio desplegado.
+
+Los cambios de cliente, Functions y Rules se publican como una versión coordinada en staging: el cliente anterior no envía token y recibirá 401 de las Functions nuevas. Provisiona un admin de confianza antes de retirar el bootstrap por correo. Las Rules deben publicarse para proteger los roles; el código del navegador no basta. Revisa los perfiles privilegiados ya existentes: cerrar el autoescalamiento no revoca roles que se hubieran asignado antes.
 
 ## Despliegue con Firebase CLI
 
@@ -39,7 +41,7 @@ Puedes combinar componentes cuando ya validaste el alcance. `firebase.json` indi
 
 ## Secretos y funciones
 
-Al desplegar funciones que consumen IA, define los secretos en el gestor de secretos del proyecto y configura las opciones de Functions para que los reciban. El código lee `ANTHROPIC_API_KEY` y opcionalmente `ANTHROPIC_MODEL` desde el entorno servidor. La credencial Firebase Admin de Cloud Functions debe provenir del entorno de servicio administrado, no de un archivo JSON subido.
+El código vincula `ANTHROPIC_API_KEY` en las opciones de todas las Functions IA, incluido MCP y digest. Define su valor con `firebase functions:secrets:set ANTHROPIC_API_KEY` en el proyecto intencional. Al desplegar funciones que consumen IA, define los secretos en el gestor de secretos del proyecto y configura las opciones de Functions para que los reciban. El código lee `ANTHROPIC_API_KEY` y opcionalmente `ANTHROPIC_MODEL` desde el entorno servidor. La credencial Firebase Admin de Cloud Functions debe provenir del entorno de servicio administrado, no de un archivo JSON subido.
 
 El paquete stdio `mcp-server` requiere credenciales por entorno (cuenta de servicio y Anthropic). Úsalo en una máquina de confianza, limita permisos IAM y evita ejecutar utilidades MCP con datos de producción si no es indispensable.
 

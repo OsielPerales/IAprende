@@ -6,23 +6,45 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-iaprende \"node --test tests/firestore.rules.test.mjs\"",
+    "check": "npm test && npm run build && npm --prefix functions run build && npm --prefix mcp-server run build",
+    "dev:review": "vite --mode review --host 127.0.0.1",
+    "build:review": "tsc && vite build --mode review",
+    "build:production": "node scripts/check-production-env.mjs && npm run build",
+    "preview:review": "vite preview --outDir dist-review --host 0.0.0.0",
+    "build:vercel": "node scripts/vercel-build.mjs",
+    "test:staging": "node scripts/check-staging.mjs",
+    "deploy:staging": "node scripts/deploy-firebase.mjs staging",
+    "deploy:production": "node scripts/deploy-firebase.mjs production",
+    "test:mobile": "node scripts/smoke-review.cjs"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@tailwindcss/vite": "^4.2.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
     "firebase-admin": "^13.8.0",
+    "firebase-tools": "^14.27.0",
+    "playwright": "^1.56.1",
     "tailwindcss": "^4.2.0",
     "typescript": "~5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vitest": "^3.2.7"
   },
   "dependencies": {
     "firebase": "^12.10.0",
     "firebase-functions": "^7.2.5",
     "lucide-react": "^0.575.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-router-dom": "^7.13.0",
     "zustand": "^5.0.11"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

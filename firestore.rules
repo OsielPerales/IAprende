@@ -1,144 +1,105 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // Helper: obtiene el rol del usuario que realiza la petición.
-    // Firestore evalúa este get() de forma perezosa y lo cachea dentro de la misma petición.
-    function callerRole() {
-      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol
-    }
-
     function isAuth() {
-      return request.auth != null
+      return request.auth != null && request.auth.token.firebase.sign_in_provider != 'anonymous';
     }
-
+    function callerRole() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol;
+    }
     function isMaestroOrAdmin() {
-      return isAuth() && callerRole() in ['maestro', 'admin']
+      return isAuth() && callerRole() in ['maestro', 'admin'];
     }
-
-    function isAdmin() {
-      return isAuth() && callerRole() == 'admin'
+    function isAdmin() { return isAuth() && callerRole() == 'admin'; }
+    function validProfile(userId) {
+      return request.resource.data.keys().hasOnly(['id', 'email', 'nombre', 'apellido', 'rol', 'avatar_url', 'created_at'])
+        && request.resource.data.id == userId
+        && request.resource.data.rol in ['alumno', 'maestro', 'admin']
+        && request.resource.data.nombre is string && request.resource.data.apellido is string
+        && request.resource.data.email is string && request.resource.data.created_at is string;
     }
-
-    // ── Usuarios ──
     match /usuarios/{userId} {
-      // Cualquier usuario autenticado puede leer (para listas de maestros, compañeros de grupo, etc.)
-      allow read: if isAuth()
-      // El mismo usuario crea su documento en el flujo de registro.
-      allow create: if isAuth() && request.auth.uid == userId
-      // Un usuario actualiza su propio perfil O un admin actualiza cualquier usuario (cambios de rol).
-      allow update: if isAuth() && (request.auth.uid == userId || isAdmin())
-      // Nadie puede borrar usuarios desde el cliente.
-      allow delete: if false
+      allow read: if isAuth();
+      // A public registration can never bootstrap its own privileged role.
+      allow create: if isAuth() && validProfile(userId) && (
+        (request.auth.uid == userId && request.resource.data.rol == 'alumno') || isAdmin()
+      );
+      allow update: if isAuth() && validProfile(userId) && (
+        isAdmin() || (request.auth.uid == userId &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'apellido', 'avatar_url']))
+      );
+      allow delete: if false;
     }
-
-    // ── Cursos ──
-    match /cursos/{cursoId} {
-      allow read: if isAuth()
-      // Solo maestros o admins pueden crear, modificar o borrar cursos.
-      allow write: if isMaestroOrAdmin()
-    }
-
-    // ── Bloques ──
-    match /bloques/{bloqueId} {
-      allow read: if isAuth()
-      // Solo maestros o admins pueden crear o editar contenido.
-      allow write: if isMaestroOrAdmin()
-    }
-
-    // ── Grupos ──
-    match /grupos/{grupoId} {
-      allow read: if isAuth()
-      // Solo maestros o admins pueden gestionar grupos.
-      allow write: if isMaestroOrAdmin()
-    }
-
-    // ── Grupo-Alumnos (Inscripciones) ──
-    match /grupo_alumnos/{inscripcionId} {
-      allow read: if isAuth()
-      // Solo maestros o admins pueden inscribir o remover alumnos.
-      allow write: if isMaestroOrAdmin()
-    }
-
-    // ── Respuestas de Cuestionarios ──
-    match /respuestas/{respuestaId} {
-      // Un alumno lee sus propias respuestas; maestros y admins leen todas.
-      allow read: if isAuth() && (
-        resource.data.alumno_id == request.auth.uid || isMaestroOrAdmin()
-      )
-      // Un alumno solo puede crear respuestas atribuidas a sí mismo.
+    // Teachers manage the single institution; organization/tenant isolation is not implemented.
+    match /cursos/{id} { allow read: if isAuth(); allow write: if isMaestroOrAdmin(); }
+    match /bloques/{id} { allow read: if isAuth(); allow write: if isMaestroOrAdmin(); }
+    match /grupos/{id} { allow read: if isAuth(); allow write: if isMaestroOrAdmin(); }
+    match /grupo_alumnos/{id} { allow read: if isAuth(); allow write: if isMaestroOrAdmin(); }
+    match /curso_grupos/{id} { allow read: if isAuth(); allow write: if isMaestroOrAdmin(); }
+    match /respuestas/{id} {
+      allow read: if isAuth() && (resource.data.alumno_id == request.auth.uid || isMaestroOrAdmin());
       allow create: if isAuth() && request.resource.data.alumno_id == request.auth.uid
-      // Solo maestros o admins pueden actualizar (calificar).
+        && request.resource.data.keys().hasOnly(['bloque_id', 'alumno_id', 'respuestas', 'calificacion', 'enviado_at'])
+        && request.resource.data.bloque_id is string && request.resource.data.respuestas is map
+        && request.resource.data.enviado_at is string && request.resource.data.calificacion == null;
       allow update: if isMaestroOrAdmin()
-      // Nadie puede borrar respuestas desde el cliente.
-      allow delete: if false
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['calificacion', 'feedback_maestro'])
+        && (request.resource.data.calificacion == null ||
+          (request.resource.data.calificacion is number && request.resource.data.calificacion >= 0 && request.resource.data.calificacion <= 100));
+      allow delete: if false;
     }
-
-    // ── SP4: Analytics de alumno ──────────────────────────────────────────────
     match /alumno_analytics/{alumnoId} {
-      // El propio alumno lee su análisis; maestros y admins leen todos.
-      allow read: if isAuth() && (
-        request.auth.uid == alumnoId || isMaestroOrAdmin()
-      )
-      // Solo Cloud Functions (Admin SDK) escriben — nunca desde el cliente.
-      allow write: if false
+      allow read: if isAuth() && (request.auth.uid == alumnoId || isMaestroOrAdmin());
+      allow write: if false;
     }
-
-    // ── SP6: Notificaciones inteligentes ──────────────────────────────────────
-    match /notificaciones/{notifId} {
-      // Solo el destinatario puede leer su notificación.
-      allow read: if isAuth() && resource.data.destinatario_id == request.auth.uid
-      // El destinatario puede marcarla como leída (update solo campo `leida`).
-      allow update: if isAuth()
-        && resource.data.destinatario_id == request.auth.uid
-        && request.resource.data.keys().hasOnly(['leida'])
-      // Solo Cloud Functions crean notificaciones.
-      allow create, delete: if false
+    match /notificaciones/{id} {
+      allow read: if isAuth() && resource.data.destinatario_id == request.auth.uid;
+      allow update: if isAuth() && resource.data.destinatario_id == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['leida'])
+        && request.resource.data.leida is bool;
+      allow create, delete: if false;
     }
-
-    // ── Progreso del Alumno ────────────────────────────────────────────────────
-    match /progreso_alumno/{docId} {
-      // El alumno lee su propio progreso; maestros y admins leen todos.
-      allow read: if isAuth() && (
-        resource.data.userId == request.auth.uid || isMaestroOrAdmin()
-      )
-      // El alumno crea su propio documento de progreso.
+    match /progreso_alumno/{id} {
+      allow get: if isAuth() && (!exists(/databases/$(database)/documents/progreso_alumno/$(id))
+        || resource.data.userId == request.auth.uid || isMaestroOrAdmin());
+      allow list: if isAuth() && (resource.data.userId == request.auth.uid || isMaestroOrAdmin());
       allow create: if isAuth() && request.resource.data.userId == request.auth.uid
-      // El alumno actualiza solo su propio progreso.
+        && request.resource.data.cursoId is string
+        && id == request.auth.uid + '_' + request.resource.data.cursoId;
       allow update: if isAuth() && resource.data.userId == request.auth.uid
-      // Nadie puede borrar progreso desde el cliente.
-      allow delete: if false
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.cursoId == resource.data.cursoId;
+      allow delete: if false;
     }
-
-    // ── Solicitudes de inscripción a grupos ───────────────────────────────────
-    match /solicitudes_inscripcion/{solicitudId} {
-      // El alumno ve sus propias; maestros y admins ven todas.
-      allow read: if isAuth() && (
-        resource.data.alumno_id == request.auth.uid || isMaestroOrAdmin()
-      )
-      // Un alumno crea su solicitud a su nombre.
+    match /solicitudes_inscripcion/{id} {
+      allow read: if isAuth() && (resource.data.alumno_id == request.auth.uid || isMaestroOrAdmin());
       allow create: if isAuth() && request.resource.data.alumno_id == request.auth.uid
-      // Maestros y admins aprueban o rechazan.
-      allow update: if isMaestroOrAdmin()
-      allow delete: if false
+        && request.resource.data.estado == 'pendiente'
+        && request.resource.data.grupo_id is string
+        && id == request.resource.data.grupo_id + '_' + request.auth.uid;
+      allow update: if isAuth() && request.resource.data.alumno_id == resource.data.alumno_id
+        && request.resource.data.grupo_id == resource.data.grupo_id && (
+          (isMaestroOrAdmin() && request.resource.data.estado in ['aprobada', 'rechazada']
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estado', 'updated_at'])) ||
+          (resource.data.alumno_id == request.auth.uid && resource.data.estado == 'rechazada'
+            && request.resource.data.estado == 'pendiente'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estado', 'mensaje', 'created_at', 'updated_at']))
+        );
+      allow delete: if false;
     }
-
-    // ── Asignaciones curso-grupo ───────────────────────────────────────────────
-    match /curso_grupos/{asignacionId} {
-      allow read: if isAuth()
-      allow write: if isMaestroOrAdmin()
+    match /caso_etico_respuestas/{id} {
+      // Collaborative responses are deliberately readable within the institution.
+      allow read: if isAuth();
+      allow create: if isAuth() && request.resource.data.userId == request.auth.uid
+        && request.resource.data.bloque_id is string && id == request.resource.data.bloque_id + '_' + request.auth.uid
+        && request.resource.data.keys().hasOnly(['userId', 'bloque_id', 'respuestas', 'created_at'])
+        && request.resource.data.respuestas is list;
+      allow update: if isAuth() && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == resource.data.userId && request.resource.data.bloque_id == resource.data.bloque_id
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['respuestas', 'created_at'])
+        && request.resource.data.respuestas is list;
+      allow delete: if false;
     }
-
-    // ── Respuestas de Caso Ético (colaborativas) ───────────────────────────────
-    match /caso_etico_respuestas/{docId} {
-      // Cualquier usuario autenticado puede leer (para ver las respuestas del grupo).
-      allow read: if isAuth()
-      // Cualquier alumno puede crear o actualizar su propia respuesta.
-      allow create, update: if isAuth()
-      // Nadie puede borrar respuestas.
-      allow delete: if false
-    }
-
+    match /ai_usage/{id} { allow read, write: if false; }
   }
 }

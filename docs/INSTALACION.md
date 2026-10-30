@@ -2,7 +2,8 @@
 
 ## Requisitos
 
-- Node.js 20 LTS recomendado. `functions/package.json` declara Node 20.
+- Node.js 22 para Vite, herramientas y Cloud Functions; `.nvmrc` fija esta versión principal.
+- Java 17+ para el emulador incluido (CI usa Java 21).
 - npm compatible con los archivos `package-lock.json`.
 - Cuenta y proyecto Firebase con Authentication, Firestore, Hosting y Cloud Functions habilitados para las funciones que se vayan a usar.
 - Para generar las capacidades de IA: clave de Anthropic guardada en el entorno servidor, además de la configuración Firebase.
@@ -40,7 +41,6 @@ Completa `.env.local` con la configuración de la aplicación web que obtuviste 
 | `VITE_AI_PROXY_URL` | URL opcional de la función proxy |
 | `VITE_AI_CLAUDE_URL` | URL base opcional de funciones de IA |
 | `VITE_AI_MODEL` | Nombre de modelo que espera el cliente legado del proxy |
-| `VITE_ADMIN_EMAIL` | Ajuste de interfaz/administración cuando aplique |
 | `VITE_MAIN_APP_URL` | URL de retorno a la app principal |
 
 Los identificadores de cliente Firebase no sustituyen reglas de seguridad. Las variables con prefijo `VITE_` se publican dentro del bundle del navegador. No pongas contraseñas, tokens privados ni claves de cuenta de servicio en ellas.
@@ -76,7 +76,20 @@ Usa credenciales de mínimo privilegio y separa desarrollo, staging y producció
 
 ## Firebase Emulator Suite
 
-`firebase.json` actualmente no declara configuración de emuladores. Si quieres trabajar sin tocar datos reales, configura Auth/Firestore/Functions emulators y ajusta los clientes localmente antes de ejecutar la app. No conectes scripts de carga a producción por defecto.
+`firebase.json` configura Firestore en `127.0.0.1:8085`. Ejecuta las pruebas con proyecto ficticio:
+
+```bash
+npm test
+npm run test:rules
+```
+
+El segundo comando arranca y detiene el emulador; no requiere claves de IA ni datos reales. La interfaz de desarrollo todavía usa el proyecto de sus variables `VITE_FIREBASE_*`; este comando de pruebas no redirige automáticamente el navegador ni configura Auth/Functions Emulator.
+
+## Primer administrador y autenticación HTTP
+
+Registra la cuenta normalmente (nace como alumno). Desde Firebase Console o Admin SDK autorizado, verifica el UID y cambia `usuarios/{uid}.rol` a `admin`. Vuelve a iniciar sesión. No hay bootstrap por correo.
+
+El frontend envía ID token Firebase en Authorization. Un cliente MCP HTTP requiere el mismo encabezado, perfil admin y renovación de token; no basta con configurar la URL. Stdio usa sus propias credenciales administrativas de entorno.
 
 ## Solución de problemas comunes
 

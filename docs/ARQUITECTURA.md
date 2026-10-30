@@ -23,7 +23,7 @@ Cloud Functions v2 proporciona operaciones HTTP, trabajos programados y un endpo
 
 ## Roles y pantallas
 
-Los roles de la aplicación son `alumno`, `maestro` y `admin`. `RoleGuard` controla el acceso a vistas; `RoleRedirect` dirige la ruta `/` al panel correspondiente. La autenticación/rol para el acceso a los documentos debe reforzarse en las reglas de Firestore y en los endpoints del servidor; ocultar una ruta en la interfaz no constituye autorización de datos.
+Los roles de la aplicación son `alumno`, `maestro` y `admin`. `RoleGuard` controla el acceso a vistas; `RoleRedirect` dirige la ruta `/` al panel correspondiente. La autenticación/rol para el acceso a los documentos debe reforzarse en las reglas de Firestore y en los endpoints del servidor; ocultar una ruta en la interfaz no constituye autorización de datos. El servidor verifica ID token con revocación y lee el rol protegido. El modelo es de una institución; el personal docente conserva acceso institucional amplio. MCP HTTP exige admin.
 
 | Rol | Capacidades visibles principales |
 |---|---|
@@ -35,7 +35,7 @@ Rutas completas y componentes asociados se encuentran en `src/App.tsx`.
 
 ## Contenido y estado
 
-`src/store/useStore.ts` centraliza el acceso de la interfaz a Firestore y sus listeners. `StoreInitializer` inicia listeners cuando la autenticación terminó y hay una persona activa. `src/store/seedCursoIA.ts` incluye datos semilla locales para contenido de demostración. `src/types/index.ts` contiene los tipos compartidos en el frontend.
+`src/store/useStore.ts` centraliza el acceso de la interfaz a Firestore y sus listeners. Filtra respuestas/solicitudes del alumno y notificaciones por UID, lee analytics individual y vacía el caché al salir. `StoreInitializer` inicia listeners cuando la autenticación terminó y hay una persona activa. `src/store/seedCursoIA.ts` incluye datos semilla locales para contenido de demostración. `src/types/index.ts` contiene los tipos compartidos en el frontend.
 
 Los componentes `src/components/bloques/` renderizan tipos de contenido interactivo. Para añadir un tipo nuevo, revisa el modelo de datos y el flujo del editor/visor además del componente visual; el tipo debe poder crearse, persistirse y renderizarse para ambos roles.
 
@@ -57,6 +57,7 @@ Las reglas actuales hacen referencia a estas colecciones:
 | `solicitudes_inscripcion` | Solicitudes para unirse a grupos |
 | `curso_grupos` | Asignaciones de cursos a grupos |
 | `caso_etico_respuestas` | Respuestas colaborativas de casos |
+| `ai_usage` | Cuota HTTP por UID; solo Admin SDK |
 
 La estructura exacta de cada documento debe contrastarse con los tipos y operaciones en `src/store/useStore.ts`, `functions/src/` y el curso desplegado. Las reglas viven en `firestore.rules`; las lecturas mediante Admin SDK en Cloud Functions no pasan por esas reglas.
 
@@ -71,14 +72,16 @@ La estructura exacta de cada documento debe contrastarse con los tipos y operaci
 | `detectKnowledgeGapsFn` | `ai/knowledgeGaps.ts` | Detecta brechas a partir de analítica del alumno |
 | `getPersonalizedLearningPathFn` | `ai/learningPath.ts` | Propone ruta adaptativa para alumno/curso |
 | `translateBlockFn` | `ai/contentTranslation.ts` | Traduce o simplifica un bloque |
-| `dailyDigestFn` | `scheduled/dailyDigest.ts` | Programa el digest diario a las 13:00 en `America/Mexico_City` |
+| `dailyDigestFn` | `scheduled/dailyDigest.ts` | Programa el digest diario a las 07:00 en `America/Mexico_City` |
+| `evaluatePromptFn` | `ai/promptSimulator.ts` | Evalúa estructura del prompt (0–5) |
+| `executePromptFn` | `ai/promptSimulator.ts` | Ejecuta el ejercicio y devuelve `{response}` |
 | `mcpServer` | `mcp/mcpHttpFunction.ts` | Atiende el protocolo MCP por HTTP sin sesión persistente |
 
-Los nombres de exportación son los del código fuente; los nombres de URL de Firebase pueden variar por región/proyecto. `functions/src/index.ts` define CORS y opciones HTTP. Verifica el comportamiento y la seguridad de cada endpoint antes de considerarlo público.
+Los nombres de exportación son los del código fuente; los nombres de URL de Firebase pueden variar por región/proyecto. `functions/src/index.ts` define exports y opciones HTTP; `security/http.ts` centraliza identidad, validación básica, cuota persistente y errores seguros. `src/lib/http.ts` añade el token del navegador. Verifica el comportamiento y la seguridad de cada endpoint antes de considerarlo público.
 
 ## Integración MCP
 
-`functions/src/mcp/` contiene servidor, herramientas de IA, herramientas de lectura/escritura y recursos para la Cloud Function HTTP. `mcp-server/src/index.ts` contiene un servidor stdio independiente para un cliente local. Requiere credenciales de Firebase Admin y clave Anthropic en el entorno del proceso. El listado y los esquemas exactos de las herramientas están definidos en el arreglo `TOOLS` y sus handlers; revisa el código antes de conceder acceso de escritura.
+`functions/src/mcp/` contiene servidor, herramientas de IA, herramientas de lectura/escritura y recursos para la Cloud Function HTTP. `mcp-server/src/index.ts` contiene un servidor stdio independiente para un cliente local. Requiere credenciales de Firebase Admin y clave Anthropic en el entorno del proceso. HTTP expone 14 herramientas y 2 recursos; stdio expone 7 herramientas y 2 recursos. Son catálogos diferentes. HTTP usa Streamable HTTP stateless con respuesta JSON; no implementa OAuth de terceros. El listado y los esquemas exactos de las herramientas están definidos en el arreglo `TOOLS` y sus handlers; revisa el código antes de conceder acceso de escritura.
 
 ## Build y alojamiento
 
