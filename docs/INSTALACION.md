@@ -2,7 +2,7 @@
 
 ## Requisitos
 
-- Node.js >=22.12 para Vite/herramientas; `functions/package.json` conserva runtime Node 20 en Firebase.
+- Node.js 22 para Vite, herramientas y Cloud Functions; `.nvmrc` fija esta versión principal.
 - Java 17+ para el emulador incluido (CI usa Java 21).
 - npm compatible con los archivos `package-lock.json`.
 - Cuenta y proyecto Firebase con Authentication, Firestore, Hosting y Cloud Functions habilitados para las funciones que se vayan a usar.

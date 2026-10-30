@@ -23,14 +23,14 @@ Consulta [la arquitectura](docs/ARQUITECTURA.md), [la instalación](docs/INSTALA
 | Interfaz | React, TypeScript, Vite, Tailwind CSS 4, React Router |
 | Estado | Zustand y contexto de autenticación |
 | Identidad y datos | Firebase Authentication y Cloud Firestore |
-| Backend | Firebase Cloud Functions v2, Node.js 20, TypeScript |
+| Backend | Firebase Cloud Functions v2, Node.js 22, TypeScript |
 | IA | Anthropic SDK en servidor; adaptador compatible con formato OpenAI |
 | Integración de asistentes | Model Context Protocol (MCP), SDK oficial |
 | Alojamiento | Firebase Hosting |
 
 ## Inicio rápido
 
-Requisitos: Node.js >=22.12 para frontend/herramientas (Cloud Functions conserva runtime Node 20), npm y acceso a un proyecto Firebase propio.
+Requisitos: Node.js 22 para frontend, herramientas y Cloud Functions, npm y acceso a un proyecto Firebase propio.
 
 ```bash
 npm ci

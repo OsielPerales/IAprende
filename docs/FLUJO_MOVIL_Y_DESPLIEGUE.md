@@ -25,7 +25,7 @@ La revisión no envía observaciones automáticamente a terceros. En modo revisi
 
 ## Vercel
 
-Proyecto de revisión previsto: `iaprende-review`, dentro de Desarrollos Elaborados, conectado a `OsielPerales/IAprende`. La rama de trabajo es `fix/iaprende-documentacion-seguridad-20261030`.
+Proyecto de revisión creado: `iaprende-review`, dentro de Desarrollos Elaborados, conectado a `OsielPerales/IAprende`. La rama de trabajo es `fix/iaprende-documentacion-seguridad-20261030`.
 
 - Framework: Vite; Node 22.
 - Instalación: `npm ci` en raíz, Functions y MCP.
@@ -37,7 +37,9 @@ Proyecto de revisión previsto: `iaprende-review`, dentro de Desarrollos Elabora
 
 El primer despliegue de un proyecto Vercel puede etiquetarse como production por Vercel; este proyecto es exclusivamente de revisión y no sustituye el Hosting Firebase del servicio real. No conectar dominios productivos a este proyecto de revisión.
 
-Se autorizó el equipo y se creó el proyecto Vercel `iaprende-review` (Node 22 y VITE_APP_ENV=review). La URL depende de completar y verificar su despliegue; el backend DEV continúa pendiente de conexión Firebase.
+Vercel confirmó READY para el commit `25bd5d1`. Primera versión: https://iaprende-review.vercel.app. Para seguir las correcciones de la rama, usar https://iaprende-review-git-fix-iaprende-b2d3e0-desarrollos-elaborados.vercel.app; Vercel actualiza ese alias cuando una nueva compilación de la rama termina correctamente. El acceso permanece protegido por la cuenta de Vercel del equipo. No se creó un enlace de acceso público temporal.
+
+El primer build detectó que el rango abierto de Node seleccionaba Node 26 pese a la configuración del proyecto; se fijó Node 22 en el código, sus lockfiles y las Functions para alinear CI y servicios. El backend DEV continúa pendiente de conexión Firebase.
 
 ## Firebase DEV
 
@@ -75,4 +77,4 @@ El workflow de GitHub sigue siendo una verificación sin despliegue automático;
 - Prueba Chromium a 390×844: paneles/cursos/grupos/calificaciones de los tres roles, editor y visor; comprueba errores JS, ancho de paneles y ausencia de llamadas a servicios Firebase/IA reales.
 - Detectados y corregidos escapes de JavaScript en dos simuladores del curso incluido; se agregaron pruebas de sintaxis para los cinco scripts embebidos.
 
-Esta evidencia es local. No hay URL pública ni despliegue DEV/productivo confirmado hasta completar y verificar los despliegues correspondientes.
+Las pruebas de navegador y Rules anteriores se ejecutaron localmente. Vercel confirmó la compilación y publicación de la revisión visual, con tests y builds de Functions/MCP; el contenido remoto protegido no se ha recorrido en navegador. No hay despliegue Firebase DEV ni productivo confirmado.
