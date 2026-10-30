@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '../store/useStore'
@@ -7,6 +8,7 @@ import type { Bloque, ProgresoAlumno } from '../types'
 import { TutorWidget } from '../components/TutorWidget'
 import { TLDRWidget } from '../components/TLDRWidget'
 import { AdaptiveResult } from '../components/AdaptiveResult'
+import { ImagenConCallouts } from '../components/ImagenConCallouts'
 import { AI_CLAUDE_URL } from '../lib/ai'
 import { BloquePortada } from '../components/bloques/BloquePortada'
 import { BloqueInfografia } from '../components/bloques/BloqueInfografia'
@@ -89,7 +91,7 @@ export function CursosAlumno() {
 
 // ── Student Course Viewer (sequential) ──
 export function CursoViewer({ cursoId }: { cursoId: string }) {
-    const { cursos, bloques, submitRespuesta, loadProgresoAlumno, upsertProgresoAlumno } = useStore()
+    const { cursos, bloques, respuestas, submitRespuesta, loadProgresoAlumno, upsertProgresoAlumno } = useStore()
     const { user } = useAuth()
     const [currentIndex, setCurrentIndex] = useState(0)
     const [completedBlocks, setCompletedBlocks] = useState<Set<string>>(new Set())
@@ -209,7 +211,9 @@ export function CursoViewer({ cursoId }: { cursoId: string }) {
                 <div className={`bg-white rounded-2xl shadow-soft border border-graphite/5 overflow-hidden ${currentBlock.tipo === 'portada' ? 'p-0' : ''}`}>
                     <StudentBlockView
                         bloque={currentBlock}
-                        quizAnswers={quizAnswers[currentBlock.id] || {}}
+                        quizAnswers={quizAnswers[currentBlock.id] ?? (respuestas
+                            .filter(r => r.bloque_id === currentBlock.id && r.alumno_id === user?.id)
+                            .sort((a, b) => b.enviado_at.localeCompare(a.enviado_at))[0]?.respuestas as Record<string, number | string>) ?? {}}
                         onQuizAnswer={(qId, answer) => {
                             setQuizAnswers((prev) => ({
                                 ...prev,
@@ -303,7 +307,7 @@ function TextoBlock({ html }: { html: string }) {
         if (next === 'same' || cache[next] || !AI_CLAUDE_URL) return
         setLoading(true)
         try {
-            const res = await fetch(`${AI_CLAUDE_URL}/translateBlockFn`, {
+            const res = await authenticatedFetch(`${AI_CLAUDE_URL}/translateBlockFn`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ htmlContent: html, level: next }),
@@ -358,7 +362,7 @@ function TextoBlock({ html }: { html: string }) {
 }
 
 // ── Student Block View ──
-function StudentBlockView({
+export function StudentBlockView({
     bloque, quizAnswers, onQuizAnswer, onQuizSubmit, isCompleted, courseTitle, onContinue, progreso, onProgresoUpdate,
 }: {
     bloque: Bloque
@@ -387,6 +391,8 @@ function StudentBlockView({
     if (bloque.tipo === 'mapa_ecosistema') return <BloqueMapa contenido={c} />
 
     // ── Original block types ─────────────────────────────────────────
+    if (bloque.tipo === 'imagen') return <div className="p-4 md:p-6"><ImagenConCallouts url={c.url || ''} alt={c.alt || ''} caption={c.caption} cuadros={c.cuadros || []} layout={c.layout || 'completa'} /></div>
+
     if (bloque.tipo === 'texto') return <TextoBlock html={c.html || ''} />
 
     if (bloque.tipo === 'carrusel') {
@@ -399,12 +405,12 @@ function StudentBlockView({
 
     if (bloque.tipo === 'cuestionario') {
         const preguntas: any[] = c.preguntas || []
-        let score = 75
+        let score: number | null = null
         if (isCompleted) {
             const mcq = preguntas.filter((p) => p.tipo === 'opcion_multiple')
             const total = mcq.reduce((s, p) => s + (p.puntos || 0), 0)
             const earned = mcq.reduce((s, p) => s + (quizAnswers[p.id] === p.correcta ? (p.puntos || 0) : 0), 0)
-            score = total > 0 ? Math.round((earned / total) * 100) : 75
+            score = total > 0 ? Math.round((earned / total) * 100) : null
         }
 
         return (
@@ -465,12 +471,14 @@ function StudentBlockView({
 
                 {isCompleted && (
                     <div className="mt-6">
-                        <AdaptiveResult
+                        {score !== null ? <AdaptiveResult
                             score={score}
                             courseTitle={courseTitle}
                             quizTitle={c.titulo || 'Cuestionario'}
                             onContinue={onContinue}
-                        />
+                            alumnoId={progreso?.userId}
+                            cursoId={bloque.curso_id}
+                        /> : <p className="text-sm text-graphite/60">Respuestas enviadas. La calificación de preguntas abiertas queda pendiente de revisión del instructor.</p>}
                     </div>
                 )}
             </div>

@@ -41,3 +41,7 @@ firebase-admin-key*.json
 
 # Temporary bundle experiments
 /functions/scratch_*.js
+
+# Local emulator output
+*-debug.log
+ui-debug.log

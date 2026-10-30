@@ -30,34 +30,25 @@ export async function runDailyDigest(): Promise<void> {
       const grupoIds = grupos.map(g => g.id)
 
       // Get students
-      const gaSnap = await db.collection('grupo_alumnos')
-        .where('grupo_id', 'in', grupoIds.slice(0, 10))
-        .get()
-
-      const alumnoIds = [...new Set(gaSnap.docs.map(d => (d.data() as any).alumno_id as string))]
-
-      // Get ungraded responses
-      const pendientesSnap = alumnoIds.length > 0
-        ? await db.collection('respuestas')
-            .where('alumno_id', 'in', alumnoIds.slice(0, 10))
-            .where('calificacion', '==', null)
-            .get()
-        : { docs: [], size: 0 } as any
-
-      const pendientesCount = pendientesSnap.size ?? 0
-
-      // Get recent submissions (last 24h)
+      const enrollmentDocs = []
+      for (let start = 0; start < grupoIds.length; start += 30) {
+        const snap = await db.collection('grupo_alumnos').where('grupo_id', 'in', grupoIds.slice(start, start + 30)).get()
+        enrollmentDocs.push(...snap.docs)
+      }
+      const alumnoIds = [...new Set(enrollmentDocs.map(d => d.data().alumno_id as string))]
       const ayer = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
-      const recientesSnap = alumnoIds.length > 0
-        ? await db.collection('respuestas')
-            .where('alumno_id', 'in', alumnoIds.slice(0, 10))
-            .where('enviado_at', '>=', ayer)
-            .get()
-        : { size: 0 } as any
-
-      const recientesCount = recientesSnap.size ?? 0
+      let pendientesCount = 0, recientesCount = 0
+      for (let start = 0; start < alumnoIds.length; start += 30) {
+        const snap = await db.collection('respuestas').where('alumno_id', 'in', alumnoIds.slice(start, start + 30)).get()
+        pendientesCount += snap.docs.filter(d => d.data().calificacion == null).length
+        recientesCount += snap.docs.filter(d => d.data().enviado_at >= ayer).length
+      }
 
       if (pendientesCount === 0 && recientesCount === 0) return
+
+      const localDay = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' })
+      const notification = db.collection('notificaciones').doc(`digest_${maestroId}_${localDay}`)
+      if ((await notification.get()).exists) return
 
       // Generate digest with Claude
       const message = await getAnthropic().messages.create({
@@ -80,7 +71,7 @@ Escribe en 2-3 oraciones. Sé motivador, específico con los números, y sugiere
       const cuerpo = message.content[0]?.type === 'text' ? message.content[0].text : ''
       if (!cuerpo) return
 
-      await db.collection('notificaciones').add({
+      await notification.create({
         destinatario_id: maestroId,
         tipo: 'digest_diario',
         titulo: '🌅 Tu resumen de hoy',

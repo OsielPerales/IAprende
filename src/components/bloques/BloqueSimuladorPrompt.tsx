@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../../lib/http'
 import { useState, useEffect } from 'react'
 import { Save, CheckCircle2, Loader2, Zap, Star } from 'lucide-react'
 import { AI_CLAUDE_URL } from '../../lib/ai'
@@ -103,7 +104,7 @@ export function BloqueSimuladorPrompt({ contenido: c, progreso, onProgresoUpdate
         setEvaluacion(null)
         try {
             if (AI_CLAUDE_URL) {
-                const res = await fetch(`${AI_CLAUDE_URL}/evaluatePromptFn`, {
+                const res = await authenticatedFetch(`${AI_CLAUDE_URL}/evaluatePromptFn`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt: assemblePrompt(), rubrica: c.rubrica_sistema }),
@@ -122,7 +123,7 @@ export function BloqueSimuladorPrompt({ contenido: c, progreso, onProgresoUpdate
             setEvaluacion({
                 score,
                 feedback: score >= 4
-                    ? 'Excelente estructura. Todos los componentes están bien definidos. Tu prompt está listo para producir resultados de alta calidad.'
+                    ? 'Modo demo. Excelente estructura. Todos los componentes están bien definidos. Tu prompt está listo para producir resultados de alta calidad.'
                     : `Modo demo. Tu prompt tiene ${score}/5 componentes. ${score < 3 ? 'Enfócate en completar ROL, CONTEXTO e INSTRUCCIÓN con más detalle.' : 'Refuerza los componentes que faltan para maximizar la precisión.'}`,
             })
         } catch {
@@ -136,7 +137,7 @@ export function BloqueSimuladorPrompt({ contenido: c, progreso, onProgresoUpdate
         setRespuestaIA('')
         try {
             if (AI_CLAUDE_URL) {
-                const res = await fetch(`${AI_CLAUDE_URL}/executePromptFn`, {
+                const res = await authenticatedFetch(`${AI_CLAUDE_URL}/executePromptFn`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt: assemblePrompt() }),

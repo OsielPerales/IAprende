@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 /**
  * SP1 — Botón "Calificar con IA" para el Gradebook
  *
@@ -46,7 +47,7 @@ export function AIGradeButton({ respuestaId, onSuggestion }: Props) {
     setError(null)
     setResult(null)
     try {
-      const res = await fetch(`${AI_CLAUDE_URL}/autoGradeRespuestaFn`, {
+      const res = await authenticatedFetch(`${AI_CLAUDE_URL}/autoGradeRespuestaFn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ respuestaId }),

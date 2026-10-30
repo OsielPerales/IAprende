@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 /**
  * SP4 — Tarjeta de Brechas de Conocimiento para el Dashboard del Alumno
  *
@@ -24,7 +25,7 @@ export function KnowledgeGapCard({ alumnoId, analytics, onRefresh }: Props) {
     if (!AI_CLAUDE_URL || refreshing) return
     setRefreshing(true)
     try {
-      const res = await fetch(`${AI_CLAUDE_URL}/detectKnowledgeGapsFn`, {
+      const res = await authenticatedFetch(`${AI_CLAUDE_URL}/detectKnowledgeGapsFn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ alumnoId }),

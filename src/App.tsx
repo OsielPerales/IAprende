@@ -25,7 +25,7 @@ function StoreInitializer({ children }: { children: ReactNode }) {
         // Esto evita errores permission-denied en páginas públicas y cierra
         // los listeners automáticamente al hacer signOut.
         if (loading || !user) return
-        const unsub = initStoreListeners()
+        const unsub = initStoreListeners(user)
         return () => unsub()
     }, [user, loading, initStoreListeners])
 

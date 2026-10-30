@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { db } from '../lib/firebase'
 import {
-    collection, doc, onSnapshot, setDoc, updateDoc, deleteDoc, addDoc, writeBatch, getDoc
+    collection, doc, onSnapshot, setDoc, updateDoc, deleteDoc, addDoc, writeBatch, getDoc, query, where
 } from 'firebase/firestore'
 import type { AppUser, Grupo, GrupoAlumno, Curso, Bloque, CuestionarioRespuesta, AlumnoAnalytics, Notificacion, ProgresoAlumno, SolicitudInscripcion, CursoGrupo } from '../types'
 
@@ -18,7 +18,7 @@ interface StoreState {
     cursoGrupos: CursoGrupo[]
 
     // Inicialización de Listeners en tiempo real
-    initStoreListeners: () => () => void
+    initStoreListeners: (user: Pick<AppUser, 'id' | 'rol'>) => () => void
 
     // Grupos
     addGrupo: (g: Omit<Grupo, 'id' | 'created_at'>) => Promise<void>
@@ -87,7 +87,11 @@ export const useStore = create<StoreState>((set, get) => ({
     solicitudes: [],
     cursoGrupos: [],
 
-    initStoreListeners: () => {
+    initStoreListeners: (user) => {
+        const clear = () => set({ usuarios: [], grupos: [], grupoAlumnos: [], cursos: [], bloques: [], respuestas: [], alumnoAnalyticsMap: {}, notificaciones: [], solicitudes: [], cursoGrupos: [] })
+        clear()
+        const ownOrAll = (name: string, field: string) => user.rol === 'alumno'
+            ? query(collection(db, name), where(field, '==', user.id)) : collection(db, name)
         const unsubs: (() => void)[] = []
 
         unsubs.push(onSnapshot(collection(db, 'usuarios'), (snap: any) => {
@@ -105,24 +109,30 @@ export const useStore = create<StoreState>((set, get) => ({
         unsubs.push(onSnapshot(collection(db, 'bloques'), (snap: any) => {
             set({ bloques: snap.docs.map((d: any) => ({ ...d.data(), id: d.id } as Bloque)).sort((a: any, b: any) => a.orden - b.orden) })
         }))
-        unsubs.push(onSnapshot(collection(db, 'respuestas'), (snap: any) => {
+        unsubs.push(onSnapshot(ownOrAll('respuestas', 'alumno_id'), (snap: any) => {
             set({ respuestas: snap.docs.map((d: any) => ({ ...d.data(), id: d.id } as CuestionarioRespuesta)) })
         }))
         // SP4: alumno_analytics
-        unsubs.push(onSnapshot(collection(db, 'alumno_analytics'), (snap: any) => {
-            const map: Record<string, AlumnoAnalytics> = {}
-            snap.docs.forEach((d: any) => { map[d.id] = d.data() as AlumnoAnalytics })
-            set({ alumnoAnalyticsMap: map })
-        }))
+        if (user.rol === 'alumno') {
+            unsubs.push(onSnapshot(doc(db, 'alumno_analytics', user.id), snap => {
+                set({ alumnoAnalyticsMap: snap.exists() ? { [user.id]: snap.data() as AlumnoAnalytics } : {} })
+            }))
+        } else {
+            unsubs.push(onSnapshot(collection(db, 'alumno_analytics'), snap => {
+                const map: Record<string, AlumnoAnalytics> = {}
+                snap.docs.forEach(d => { map[d.id] = d.data() as AlumnoAnalytics })
+                set({ alumnoAnalyticsMap: map })
+            }))
+        }
         // SP6: notificaciones
-        unsubs.push(onSnapshot(collection(db, 'notificaciones'), (snap: any) => {
+        unsubs.push(onSnapshot(query(collection(db, 'notificaciones'), where('destinatario_id', '==', user.id)), (snap: any) => {
             set({
                 notificaciones: snap.docs
                     .map((d: any) => ({ ...d.data(), id: d.id } as Notificacion))
                     .sort((a: Notificacion, b: Notificacion) => b.created_at.localeCompare(a.created_at))
             })
         }))
-        unsubs.push(onSnapshot(collection(db, 'solicitudes_inscripcion'), (snap: any) => {
+        unsubs.push(onSnapshot(ownOrAll('solicitudes_inscripcion', 'alumno_id'), (snap: any) => {
             set({
                 solicitudes: snap.docs
                     .map((d: any) => ({ ...d.data(), id: d.id } as SolicitudInscripcion))
@@ -133,7 +143,7 @@ export const useStore = create<StoreState>((set, get) => ({
             set({ cursoGrupos: snap.docs.map((d: any) => d.data() as CursoGrupo) })
         }))
 
-        return () => unsubs.forEach(u => u())
+        return () => { unsubs.forEach(u => u()); clear() }
     },
 
     // ── Grupos ──

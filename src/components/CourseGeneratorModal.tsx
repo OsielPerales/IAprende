@@ -1,3 +1,4 @@
+import { authenticatedFetch } from '../lib/http'
 /**
  * SP2 — Modal de Generación de Cursos desde Lenguaje Natural
  *
@@ -29,7 +30,7 @@ export function CourseGeneratorModal({ maestroId, onClose }: Props) {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${AI_CLAUDE_URL}/generateCourseFromTopicFn`, {
+      const res = await authenticatedFetch(`${AI_CLAUDE_URL}/generateCourseFromTopicFn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

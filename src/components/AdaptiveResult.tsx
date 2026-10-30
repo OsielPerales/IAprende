@@ -3,6 +3,8 @@ import { TrendingUp, TrendingDown, AlertTriangle, Star, ArrowRight, RotateCcw, B
 import { getAdaptiveRecommendation, type AdaptiveRecommendation } from '../lib/ai'
 
 interface Props {
+    alumnoId?: string
+    cursoId?: string
     score: number
     courseTitle: string
     quizTitle: string
@@ -46,15 +48,15 @@ const NIVEL_CONFIG = {
     },
 }
 
-export function AdaptiveResult({ score, courseTitle, quizTitle, wrongTopics = [], onContinue, onRetry }: Props) {
+export function AdaptiveResult({ score, courseTitle, quizTitle, wrongTopics = [], onContinue, onRetry, alumnoId, cursoId }: Props) {
     const [rec, setRec] = useState<AdaptiveRecommendation | null>(null)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getAdaptiveRecommendation(score, courseTitle, quizTitle, wrongTopics)
+        getAdaptiveRecommendation(score, courseTitle, quizTitle, wrongTopics, alumnoId, cursoId)
             .then(setRec)
             .finally(() => setLoading(false))
-    }, [score, courseTitle, quizTitle])
+    }, [score, courseTitle, quizTitle, alumnoId, cursoId])
 
     if (loading) {
         return (

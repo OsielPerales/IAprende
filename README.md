@@ -30,7 +30,7 @@ Consulta [la arquitectura](docs/ARQUITECTURA.md), [la instalación](docs/INSTALA
 
 ## Inicio rápido
 
-Requisitos: Node.js 20 recomendado (Cloud Functions requiere Node 20), npm y acceso a un proyecto Firebase propio.
+Requisitos: Node.js >=22.12 para frontend/herramientas (Cloud Functions conserva runtime Node 20), npm y acceso a un proyecto Firebase propio.
 
 ```bash
 npm ci
@@ -91,8 +91,21 @@ Las claves de Anthropic pertenecen únicamente al servidor. En producción, conf
 
 ## Estado y límites conocidos
 
+Contraste de código, correcciones y evidencia: [Estado actual — 30 oct 2026](docs/ESTADO_ACTUAL_2026-10-30.md).
+
+Verificación reproducible (requiere instalar los tres paquetes):
+
+```bash
+npm run check
+npm run test:rules
+```
+
+`test:rules` usa Firestore Emulator y el proyecto ficticio `demo-iaprende`; requiere Java 17+ (Java 21 en CI).
+
+
 - El frontend y backend están separados en raíz y `functions/`; el servidor MCP stdio es un paquete independiente.
-- Las llamadas HTTP de Functions del código actual aplican CORS, pero no todas validan identidad Firebase en el propio endpoint. Antes de exponerlas a usuarios o datos reales, revisa autenticación, autorización, validación de entrada, cuotas y costos según [seguridad](docs/SEGURIDAD.md).
+- Todas las llamadas HTTP de IA verifican Firebase ID token y perfil; MCP HTTP requiere admin. Registro crea alumnos; el primer admin se provisiona desde un entorno de confianza. Las Rules y Functions nuevas deben desplegarse explícitamente para tener efecto; consulta [seguridad](docs/SEGURIDAD.md).
+- La aplicación actual es de una sola institución: maestros tienen permisos institucionales amplios. No hay aislamiento multiempresa. `/admin/config` sigue siendo una pantalla pendiente.
 - No se publica un conjunto de datos de muestra ni credenciales de Firebase. Para una instalación nueva se requiere configurar Auth, Firestore, secretos y reglas en un proyecto propio.
 - Los archivos PDF/DOCX de cursos son materiales del producto y no son necesarios para compilar el código.
 

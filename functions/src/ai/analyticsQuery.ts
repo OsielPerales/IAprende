@@ -25,11 +25,13 @@ export async function queryClassData(
   }
 
   // Fetch students in those groups
-  const gaSnap = await db.collection('grupo_alumnos')
-    .where('grupo_id', 'in', grupoIds.slice(0, 10))
-    .get()
-
-  const alumnoIds = [...new Set(gaSnap.docs.map(d => (d.data() as any).alumno_id as string))]
+  const enrollments = []
+  for (let start = 0; start < grupoIds.length; start += 30) {
+    const snap = await db.collection('grupo_alumnos').where('grupo_id', 'in', grupoIds.slice(start, start + 30)).get()
+    enrollments.push(...snap.docs)
+  }
+  const alumnoIds = [...new Set(enrollments.map(d => d.data().alumno_id as string))]
+  if (!alumnoIds.length) return { answer: 'Tus grupos aún no tienen alumnos inscritos.', dataUsed: ['grupos'] }
 
   // Fetch student profiles
   const alumnoProfiles: Record<string, any> = {}
@@ -39,11 +41,11 @@ export async function queryClassData(
   }
 
   // Fetch responses
-  const respSnap = await db.collection('respuestas')
-    .where('alumno_id', 'in', alumnoIds.slice(0, 10))
-    .get()
-
-  const respuestas = respSnap.docs.map(d => ({ id: d.id, ...d.data() })) as any[]
+  const respuestas: any[] = []
+  for (let start = 0; start < alumnoIds.length; start += 30) {
+    const snap = await db.collection('respuestas').where('alumno_id', 'in', alumnoIds.slice(start, start + 30)).get()
+    respuestas.push(...snap.docs.map(d => ({ id: d.id, ...d.data() })))
+  }
 
   // Build compact context (avoid token bloat)
   const dataContext = {
