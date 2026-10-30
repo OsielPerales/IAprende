@@ -1,0 +1,1336 @@
+
+
+
+
+Manual del Participante
+
+IA Estratégica y Diseño de Instrucciones Proactivas
+
+[ IMAGEN DE PORTADA ]
+
+Descripción sugerida: Representación visual de una persona interactuando con una
+
+interfaz de inteligencia artificial con nodos interconectados de luz, representando la
+
+red neuronal de un modelo de lenguaje en un entorno de trabajo profesional moderno.
+
+
+
+
+
+Diseñador Instruccional:
+
+Osiel Alejandro Perales Jimenez
+
+
+
+Índice
+
+
+
+Sección
+
+Página
+
+Presentación del taller
+
+3
+
+Bienvenida
+
+3
+
+Recomendaciones para utilizar este manual
+
+3
+
+Organización del manual
+
+3
+
+Introducción
+
+4
+
+Beneficios del curso
+
+4
+
+Enfoque didáctico
+
+4
+
+Objetivo General
+
+5
+
+Objetivos Particulares
+
+5
+
+Análisis de expectativas y compromisos
+
+6
+
+Momentos de evaluación
+
+6
+
+MÓDULO I: Encuadre y Fundamentos
+
+7
+
+MÓDULO II: Estructura Maestra del Prompt
+
+9
+
+MÓDULO III: Sesgos, Alucinaciones y Ética
+
+13
+
+Evaluación Diagnóstica
+
+16
+
+Evaluación Formativa
+
+17
+
+Evaluación Final (Sumativa)
+
+19
+
+Bibliografía
+
+21
+
+
+
+Presentación
+
+Este curso-taller está diseñado para que los participantes puedan dominar la Inteligencia Artificial (IA) como una herramienta de productividad estratégica. A través de una metodología clara, práctica y accesible, aprenderás a diseñar instrucciones o "prompts" que transforman la IA en un colaborador de alto rendimiento. El taller parte de los conocimientos y procesos que ya tienes en tu vida profesional y personal, para que puedas identificar dónde la IA genera mayor impacto, cómo estructurar instrucciones precisas y cómo usar esta tecnología de manera ética y responsable.
+
+
+
+Bienvenida
+
+Te damos la más cordial bienvenida al curso-taller "IA Estratégica y Diseño de Instrucciones". Nuestra intención principal es dotarte de las herramientas más efectivas y actuales para que puedas convertir la Inteligencia Artificial en un multiplicador real de tu productividad. Serás guiado paso a paso desde los fundamentos del pensamiento computacional hasta la construcción de tu propio Asistente IA personalizado, listo para aplicar en tu negocio o entorno profesional desde el día uno.
+
+
+
+Recomendaciones para utilizar este manual
+
+Para aprovechar al máximo este manual y el taller, te sugerimos:
+
+Lee cada sección antes de la sesión correspondiente para llegar con contexto previo.
+
+Utiliza los espacios de escritura para registrar tus reflexiones, ejemplos y prompts personales.
+
+Conecta cada concepto con un proceso real de tu trabajo o negocio: la IA solo es poderosa cuando la aplicas a tu realidad.
+
+No te preocupes por la perfección al escribir prompts: el error es parte del aprendizaje iterativo.
+
+Conserva este manual como tu bitácora de prompts y referencia constante después del taller.
+
+
+
+Organización del manual
+
+Este manual está estructurado en secciones progresivas que te guiarán desde los fundamentos conceptuales hasta la práctica aplicada. En él encontrarás: el índice de contenidos, la presentación del taller, los objetivos de aprendizaje, los formularios de encuadre y compromisos, el desarrollo completo de los tres módulos temáticos con ejercicios y actividades prácticas, los instrumentos de evaluación que se aplicarán durante el curso, y la bibliografía de referencia para que puedas continuar tu formación de manera autónoma.
+
+
+
+Introducción
+
+La intención principal de este manual es proporcionar una guía de seguimiento eficiente para el participante, basada en los procedimientos didácticos que se desarrollarán durante el taller. Vivimos una transformación tecnológica sin precedentes: los motores de búsqueda tradicionales están siendo reemplazados por motores de razonamiento basados en Inteligencia Artificial que no solo encuentran información, sino que la procesan, analizan, redactan y crean. Entender esta diferencia es el primer paso para convertirte en un usuario estratégico de estas herramientas.
+
+Este manual contiene información práctica sobre los temas, ejercicios y la experiencia que vivirás como participante. El enfoque es totalmente aplicado: cada concepto va acompañado de un ejercicio que puedes ejecutar de inmediato en tu contexto real.
+
+
+
+Beneficios que el curso aportará a los participantes
+
+Beneficios laborales y profesionales
+
+Optimización de procesos repetitivos, liberando hasta un 70% del tiempo invertido en tareas mecánicas.
+
+Mejora en la precisión y calidad de tus interacciones con herramientas de IA.
+
+Generación de plantillas y prompts reutilizables para automatización continua.
+
+Reducción de costos operativos mediante el uso eficiente de tokens en modelos de IA.
+
+
+
+Beneficios personales
+
+Desarrollo de competencias digitales avanzadas con alto valor en el mercado laboral actual.
+
+Capacidad para diseñar instrucciones proactivas, precisas y personalizadas para cualquier contexto.
+
+Conciencia ética sobre el uso responsable de la Inteligencia Artificial.
+
+Certificación que valida tus nuevas competencias profesionales ante el estándar EC0301.
+
+
+
+Enfoque Didáctico del curso
+
+Este curso-taller se imparte en modalidad presencial y está basado en un enfoque constructivista: aprenderás construyendo sobre tus conocimientos previos y experiencia profesional. Las técnicas instruccionales utilizadas son: Expositiva Dialogada (Módulo I), Demostrativa en vivo con herramientas de IA reales (Módulo II) y Diálogo-Discusión colaborativa (Módulo III). Cada módulo integra teoría y práctica de manera simultánea. La evaluación es continua y formativa, con retroalimentación inmediata del instructor.
+
+
+
+Objetivo General
+
+Al finalizar el curso-taller, el participante:
+
+Diseñará y aplicará prompts estratégicos utilizando la Estructura Maestra (Rol, Contexto, Instrucción, Restricciones, Formato) para automatizar procesos personales y empresariales, mediante ejercicios prácticos, retroalimentación por pares y evaluaciones formativas, optimizando su productividad, reduciendo tiempos en tareas mecánicas y fomentando un uso responsable y ético de la Inteligencia Artificial en su entorno profesional.
+
+
+
+
+
+Objetivos Particulares
+
+El participante:
+
+
+
+Módulo I — Comprenderá el cambio de paradigma de buscadores a motores de razonamiento e identificará procesos repetitivos en su negocio o entorno susceptibles de automatización mediante IA, a través de un taller práctico con herramientas accesibles y guía ética.
+
+
+
+Módulo II — Aprenderá y aplicará la Estructura Maestra del Prompt (Rol, Contexto, Instrucción, Restricciones, Formato) en ejemplos adaptados a su entorno, mediante ejercicios prácticos en parejas y plantillas, generando prompts precisos y reutilizables que optimicen la interacción con IA.
+
+
+
+Módulo III — Desarrollará actitudes de colaboración activa y compartirá conocimientos con sus compañeros, desarrollando técnicas para corregir prompts, detectar sesgos y evitar alucinaciones en el diseño de instrucciones, asegurando la aplicación continua y responsable de la IA en su negocio.
+
+
+
+Transversal — Saber Convivir: A lo largo del curso desarrollará actitudes de colaboración activa, intercambio de prompts y retroalimentación entre pares, fortaleciendo habilidades sociales y profesionales, creando redes de contacto y promoviendo el aprendizaje mutuo.
+
+
+
+Análisis de Expectativas y Compromisos
+
+Instrucciones: Contesta de forma individual cada una de las siguientes preguntas antes de iniciar el taller.
+
+
+
+¿Cuáles son mis expectativas de este curso?
+
+
+
+
+
+
+
+
+
+
+
+¿Qué proceso específico de mi trabajo o negocio espero automatizar o mejorar con IA?
+
+
+
+
+
+
+
+
+
+
+
+A lo que me comprometo durante el curso es:
+
+
+
+
+
+
+
+
+
+Los compromisos y lineamientos que seguiré durante el curso son:
+
+
+
+
+
+
+
+
+
+Momentos de Evaluación
+
+Este curso-taller contempla tres momentos de evaluación. La evaluación diagnóstica, al inicio, identificará tus conocimientos previos sobre IA. La evaluación formativa, durante el Módulo II, verificará que hayas construido correctamente tu Prompt Maestro con los 5 componentes de la Estructura Maestra. La evaluación sumativa, al cierre, evaluará tanto tu capacidad práctica de crear un asistente aplicable como tu comprensión de los principios éticos del uso de IA.
+
+
+
+La calificación mínima aprobatoria de este curso es del 80%. Esta calificación se distribuye de la siguiente manera:
+
+
+
+Factor
+
+Porcentaje
+
+Instrumento y momento
+
+Evaluación Diagnóstica
+
+Solo referencial
+
+Cuestionario inicial — Al inicio del taller
+
+Evaluación Formativa
+
+50%
+
+Guía de Observación / Lista de cotejo — Final del Módulo II
+
+Evaluación Sumativa
+
+50%
+
+Cuestionario + Proyecto Prompt Maestro Final — Cierre del taller
+
+
+
+MÓDULO I: Encuadre y Fundamentos de la IA
+
+
+
+Objetivo Particular del Módulo I
+
+Al finalizar este módulo comprenderás el cambio de paradigma de buscadores a motores de razonamiento e identificarás procesos repetitivos susceptibles de automatización en tu entorno profesional.
+
+
+
+[ IMAGEN — MÓDULO I ]
+
+Descripción: Diagrama comparativo entre un buscador tradicional (Google) y un motor
+
+de razonamiento (ChatGPT/Gemini). El buscador muestra una lista de links; el motor de
+
+razonamiento muestra una respuesta elaborada, un análisis y una recomendación.
+
+
+
+Lección 1.1 — De Buscadores a Motores de Razonamiento
+
+Hasta hace pocos años, cuando necesitabas información, abrías Google y recibías una lista de sitios web donde posiblemente estaba la respuesta. Tú seguías siendo el analista: leías, filtrababas, comparabas y sintetizabas. Los motores de razonamiento como ChatGPT, Gemini o Perplexity transforman completamente esta dinámica: ahora la IA procesa la información, redacta la respuesta, la adapta a tu contexto y te entrega un producto listo para usar.
+
+
+
+Buscador tradicional (Google)
+
+Motor de razonamiento (ChatGPT/Gemini)
+
+Te da una lista de links
+
+Te da una respuesta elaborada
+
+Tú buscas y filtras la información
+
+La IA procesa y sintetiza por ti
+
+Responde con lo que existe en la web
+
+Razona, redacta, analiza y genera contenido
+
+No tiene memoria del contexto
+
+Mantiene el contexto de la conversación
+
+No crea documentos o textos
+
+Genera textos, reportes, código, análisis
+
+
+
+¿Cómo funciona realmente la IA?
+
+Los modelos de lenguaje como GPT o Gemini funcionan mediante predicción probabilística de tokens (palabras o fragmentos de palabras). La IA no "piensa" como un humano: analiza patrones en billones de textos para predecir la siguiente palabra más probable dado un contexto. Esto explica tanto sus capacidades extraordinarias como sus limitaciones, como las "alucinaciones" (inventar datos que suenan verídicos).
+
+
+
+Lección 1.2 — La Arquitectura MoE
+
+Los modelos modernos de IA utilizan una arquitectura llamada Mixture of Experts (MoE o Mezcla de Expertos). En lugar de usar todos sus parámetros para cada consulta, el modelo activa solo los "expertos" más relevantes para la tarea. Cuando le asignas un ROL específico a la IA (ej. "Actúa como un contador público con 15 años de experiencia en PYMES"), activas los nodos especializados del modelo. Esto no es solo retórica: mejora directamente la calidad y precisión de la respuesta.
+
+
+
+Nota importante: Dato clave: GPT-4 tiene aproximadamente 8 expertos activos de 16 totales en cada llamada. Asignar un rol bien definido es como contratar al especialista correcto en lugar de preguntarle a un generalista.
+
+
+
+Lección 1.3 — Identificación de Puntos de Dolor en tu Negocio
+
+Un "punto de dolor" es cualquier tarea que consuma tiempo significativo, se repita con frecuencia, siga un patrón predecible o genere fricción en tus procesos. Son exactamente los candidatos ideales para la automatización con IA.
+
+
+
+Actividad: Bitácora de Procesos
+
+Instrucciones: Reflexiona sobre tu trabajo o negocio durante 3 minutos y completa la siguiente tabla identificando procesos que realizas regularmente.
+
+
+
+Proceso o tarea
+
+¿Cuánto tiempo consume?
+
+¿Podría automatizarse con IA?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MÓDULO II: La Estructura Maestra del Prompt
+
+
+
+Objetivo Particular del Módulo II
+
+Aprenderás y aplicarás la Estructura Maestra del Prompt (Rol, Contexto, Instrucción, Restricciones, Formato) en ejemplos adaptados a tus propios contextos, generando prompts precisos y reutilizables.
+
+
+
+[ IMAGEN — MÓDULO II ]
+
+Descripción: Infografía circular que muestra los 5 componentes de la Estructura Maestra del
+
+Prompt como piezas interconectadas de un engranaje: ROL (azul marino), CONTEXTO (verde),
+
+INSTRUCCIÓN (naranja), RESTRICCIONES (rojo suave) y FORMATO (púrpura).
+
+
+
+Los 5 Componentes de la Estructura Maestra
+
+
+
+#
+
+Componente
+
+Definición, propósito y ejemplo
+
+1
+
+ROL
+
+Define la identidad y experticia de la IA. Al asignar un rol específico activas los nodos MoE correctos del modelo. Entre más específico y contextualizado sea el rol, mejor será la calidad de la respuesta.
+
+Ejemplo: "Actúa como un experto en marketing digital especializado en PYMES del sector restaurantero con 10 años de experiencia en redes sociales."
+
+2
+
+CONTEXTO
+
+Es la 'ventana de trabajo' o 'mesa de trabajo' de la IA: toda la información relevante que necesita para operar correctamente. Sin contexto suficiente, la IA inventa datos o genera respuestas genéricas.
+
+Ejemplo: "Mi restaurante se llama 'El Rincón Oaxaqueño', abrimos hace 2 años, tenemos 20 mesas, nuestro ticket promedio es $180 MXN y nuestros clientes principales son familias de clase media en Benito Juárez, CDMX."
+
+3
+
+INSTRUCCIÓN
+
+El mandato central del prompt. Siempre debe comenzar con un verbo de acción fuerte en imperativo: Genera, Redacta, Analiza, Sintetiza, Diseña, Crea, Evalúa, Compara.
+
+Ejemplo: "Redacta una respuesta empática y profesional para un cliente que se quejó en redes sociales de que su pedido llegó frío."
+
+4
+
+RESTRICCIONES
+
+Los límites que definen lo que la IA NO debe hacer o los parámetros que debe respetar. Las restricciones eliminan ambigüedades y evitan respuestas fuera de contexto.
+
+Ejemplo: "No uses tecnicismos gastronómicos. No excedas 80 palabras. Mantén un tono cálido pero profesional. No hagas promesas de descuentos."
+
+5
+
+FORMATO
+
+La estructura visual o textual de la salida que necesitas. Especificar el formato ahorra tiempo de edición y hace la respuesta directamente utilizable.
+
+Ejemplo: "Responde en una lista de 3 puntos con emojis: 1) Disculpa, 2) Solución inmediata, 3) Compromiso de mejora."
+
+
+
+
+
+Ejemplo completo: Prompt Maestro en acción
+
+A continuación verás cómo los 5 componentes se integran en un solo prompt coherente. Este ejemplo fue construido en vivo durante la demostración del instructor:
+
+
+
+PROMPT MAESTRO COMPLETO — Caso Panadería
+
+ROL: Actúa como un experto en servicio al cliente con 10 años de experiencia atendiendo reclamaciones para PYMES del sector alimenticio.CONTEXTO: Mi negocio se llama 'Pan de Casa', una panadería artesanal familiar en Tlalpan, CDMX. Llevamos 5 años operando. Nuestro cliente principal son familias locales que valoran lo artesanal y el servicio personalizado.INSTRUCCIÓN: Redacta una respuesta empática y profesional para publicar en nuestras redes sociales respondiendo a un cliente que se quejó públicamente de que su pedido de pastel llegó aplastado.RESTRICCIONES: No excedas 100 palabras. No hagas promesas de reembolso.Mantén un tono cálido y humano. No uses tecnicismos.FORMATO: Lista de 3 puntos con emoji: 1) Disculpa sincera, 2) Solución inmediata,3) Compromiso de mejora. Termina con firma 'El equipo de Pan de Casa'.
+
+
+
+
+
+Lección 2.1 — El ROL y la Arquitectura MoE
+
+Ya vimos que los modelos modernos de IA son modelos de Mezcla de Expertos (MoE). Cuando escribes "Actúa como un [profesión específica]", la IA activa los nodos de su red neuronal que fueron entrenados con más texto de ese dominio. Un rol genérico como "asistente" activa nodos generales; un rol específico como "abogado mercantil especializado en franquicias con experiencia en disputas de marcas" activa patrones mucho más especializados y precisos.
+
+
+
+Práctica: Construyendo el ROL
+
+Instrucciones: Para el proceso que identificaste en el Módulo I, escribe el ROL que le asignarías a la IA. Recuerda: incluye título profesional + especialidad + contexto + años de experiencia.
+
+Mi ROL personalizado:
+
+
+
+
+
+
+
+
+
+Lección 2.2 — La Ventana de Contexto: Tu Mesa de Trabajo
+
+Imagina que contratas a un consultor de alto nivel para resolver un problema. Si llegas sin información, sin datos, sin detalles de tu empresa, el consultor solo puede darte respuestas genéricas. Lo mismo ocurre con la IA: el CONTEXTO es todo lo que pones sobre la mesa antes de pedir la solución. La "ventana de contexto" es la capacidad del modelo para recordar información dentro de una sesión. Los modelos modernos manejan ventanas de 128,000 a 2,000,000 tokens (equivalente a cientos de páginas de texto).
+
+
+
+Nota importante: Advertencia de seguridad: NUNCA incluyas en el contexto datos personales reales de clientes (nombres, correos, teléfonos, RFC, cuentas bancarias). Usa datos ficticios o anonimizados en tu entrenamiento.
+
+
+
+Práctica: Construyendo el CONTEXTO
+
+Mi CONTEXTO personalizado (datos de mi negocio/situación — sin información confidencial real):
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lección 2.3 — Instrucción y Formato
+
+La INSTRUCCIÓN es el corazón del prompt: el mandato que le das a la IA. El error más común es usar lenguaje pasivo o vago ('quiero ver si puedes...', 'me gustaría que...', 'podrías hacer...'). Un prompt proactivo comienza con un verbo de acción imperativo fuerte.
+
+
+
+Verbos débiles (evitar)
+
+Verbos fuertes (usar)
+
+Podrías hacer...
+
+Genera
+
+Me gustaría que...
+
+Redacta
+
+Quiero ver si puedes...
+
+Analiza
+
+A ver si....
+
+Sintetiza
+
+Necesitaría algo así como...
+
+Diseña / Crea / Evalúa
+
+
+
+El FORMATO define cómo quieres recibir la respuesta. Elegir el formato correcto hace que la salida sea directamente utilizable sin edición adicional. Los formatos más útiles son: listas numeradas o con viñetas, tablas comparativas, Markdown (para documentos digitales), JSON (para integración con sistemas), correo electrónico listo para enviar, o estructura específica con secciones nombradas.
+
+
+
+Lección 2.4 — Restricciones y Tokens
+
+Las RESTRICCIONES son los límites que definen lo que la IA no debe hacer: evitan respuestas fuera de contexto, controlan la longitud, establecen el tono y protegen información sensible. Los tokens son la unidad de costo en los modelos de IA de pago: aproximadamente 1 token = 0.75 palabras en español. Prompts más precisos con restricciones bien definidas generalmente producen mejores respuestas con menos tokens, reduciendo costos si usas APIs de pago.
+
+
+
+Práctica integrada: Mi Prompt Maestro completo
+
+Construye tu Prompt Maestro completo integrando los 5 componentes. Usa el espacio de abajo o la Hoja de Trabajo de la Evaluación Formativa.
+
+Mi Prompt Maestro completo:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MÓDULO III: Sesgos, Alucinaciones y Ética en IA
+
+
+
+Objetivo Particular del Módulo III
+
+Desarrollarás técnicas para corregir prompts, detectar sesgos y evitar alucinaciones, asegurando un uso continuo, responsable y ético de la IA en tu negocio.
+
+
+
+[ IMAGEN — MÓDULO III ]
+
+Descripción: Ilustración de un proceso de filtrado o revisión humana: una persona frente a una
+
+pantalla donde la IA genera texto, con una lupa o escudo de verificación sobre los datos generados,
+
+representando el concepto de 'filtro humano' y responsabilidad ética del usuario.
+
+
+
+Lección 3.1 — ¿Qué es una Alucinación en IA?
+
+Una 'alucinación' en IA ocurre cuando el modelo genera información que parece completamente plausible y bien redactada, pero que es factualmente incorrecta o simplemente inventada. Esto sucede porque los modelos de lenguaje predicen la siguiente palabra más probable, no la más verdadera. Las alucinaciones son más frecuentes cuando: el modelo no tiene información suficiente en su contexto de entrenamiento, el prompt está mal definido o el modelo intenta completar lagunas de información.
+
+
+
+Ejemplo de alucinación:
+
+Pregunta sin contexto: '¿Cuál es el precio actual del dólar en México?'
+
+Respuesta probable con alucinación: 'El tipo de cambio actual es de $17.85 pesos por dólar.' (Dato inventado o desactualizado.)
+
+Solución: Siempre que necesites datos actuales, verifica en fuentes oficiales. Usa la IA para analizar datos que TÚ le proporcionas, no para obtener datos que no están en su ventana de contexto.
+
+
+
+Lección 3.2 — Tipos de Sesgos en los Prompts
+
+Los sesgos son distorsiones sistemáticas en las respuestas de la IA que provienen de los datos de entrenamiento o de cómo formulamos nuestras preguntas.
+
+
+
+Tipo de sesgo
+
+¿Qué es?
+
+Cómo detectarlo y corregirlo
+
+Sesgo de confirmación
+
+La IA te da la respuesta que 'esperas' escuchar basándose en cómo formulaste la pregunta.
+
+Formula la pregunta de manera neutral o pide explícitamente pros y contras.
+
+Alucinación por falta de contexto
+
+Inventa datos estadísticos, citas o referencias que no existen.
+
+Proporciona los datos tú mismo en el CONTEXTO. Verifica siempre cifras en fuentes primarias.
+
+Sesgo implícito del entrenamiento
+
+Reproduce estereotipos presentes en sus datos de entrenamiento.
+
+Incluye en las RESTRICCIONES: 'Evita generalizaciones. Basa la respuesta solo en los datos que te proporciono.'
+
+
+
+Lección 3.3 — El Filtro Humano: Tu responsabilidad ética
+
+La IA es una herramienta de alto rendimiento, pero tú eres el responsable final de todo lo que produces con ella. Esto incluye: la veracidad de la información que utilizas, el impacto de los textos que generas y publicas, el respeto a la privacidad de datos de terceros, el uso ético en contextos profesionales y la transparencia sobre el uso de IA cuando sea relevante.
+
+
+
+Los 3 principios del uso ético de la IA:
+
+1. VERIFICAR: Nunca publiques datos generados por IA sin verificarlos en fuentes primarias.
+
+2. PROTEGER: Nunca incluyas datos personales reales de clientes, empleados o proveedores en un prompt.
+
+3. TRANSPARAR: Cuando el contexto lo requiera, sé transparente sobre el uso de IA en tus producciones.
+
+
+
+Actividad de discusión grupal — Módulo III
+
+En tu equipo de 3-4 personas, analiza el siguiente caso y responde las preguntas:
+
+
+
+Caso de análisis:
+
+Una empresa de reclutamiento usa IA para filtrar CVs. El prompt dice: 'Selecciona a los candidatos más aptos para un puesto de liderazgo en ventas.' La IA selecciona consistentemente a hombres de entre 30-45 años, ignorando candidatas mujeres igualmente calificadas.
+
+
+
+Preguntas para el equipo:
+
+a) ¿Qué tipo de sesgo se está produciendo aquí?
+
+b) ¿Cómo reescribirías el prompt para corregir el sesgo?
+
+c) ¿Quién es responsable de este resultado: la empresa, la IA o ambos?
+
+
+
+Conclusiones de nuestro equipo:
+
+
+
+
+
+
+
+
+
+
+
+EVALUACIÓN DIAGNÓSTICA
+
+
+
+Nombre del curso:
+
+IA Estratégica y Diseño de Instrucciones Proactivas
+
+Instructor:
+
+____________________________
+
+
+
+Nombre del participante:
+
+____________________________
+
+Fecha:
+
+_____________
+
+
+
+Instrucciones: Responde con honestidad cada pregunta. No hay respuestas correctas o incorrectas en esta evaluación — su propósito es conocer tu punto de partida. Tiempo: 5 minutos.
+
+Nota importante: Esta evaluación es solo referencial. No cuenta para tu calificación final. El instructor la utiliza para ajustar el nivel de profundidad del curso a las necesidades del grupo.
+
+
+
+No.
+
+Pregunta
+
+Respuesta
+
+1
+
+¿Qué es la Inteligencia Artificial para ti en este momento?
+
+
+
+2
+
+¿Has usado herramientas de IA (ChatGPT, Gemini, Copilot, etc.)? ¿Con qué frecuencia?
+
+
+
+3
+
+¿Qué diferencia encuentras entre buscar en Google y preguntar a ChatGPT?
+
+
+
+4
+
+¿Qué es un 'prompt' para ti?
+
+
+
+5
+
+Nombra al menos un proceso de tu trabajo que crees podría automatizarse con IA.
+
+
+
+
+
+EVALUACIÓN FORMATIVA — Módulo II
+
+
+
+Nombre del participante:
+
+____________________________
+
+Fecha:
+
+_______
+
+Módulo:
+
+II — La Estructura Maestra del Prompt
+
+Valor:
+
+50% del total del curso
+
+
+
+Parte A — Mi Prompt Maestro Personalizado
+
+Instrucciones: 1) Elige uno de los 5 ejemplos de Asistentes IA que aparecen a continuación. 2) Adáptalo completamente a tu propio contexto. 3) Construye tu Prompt Maestro completo con los 5 componentes. 4) Escríbelo en el recuadro. 5) Marca los componentes incluidos antes de entregar.
+
+
+
+5 Ejemplos de Asistentes IA Estratégicos (elige solo uno):
+
+
+
+Opción
+
+Asistente IA
+
+Utilidad práctica
+
+1
+
+Generador de Campañas Publicitarias (Marketing Digital)
+
+Convierte datos dispersos de cualquier producto en una campaña publicitaria completa y lista para ejecutar.
+
+2
+
+Analizador de Perfiles Laborales (Recursos Humanos)
+
+Evalúa CVs contra un perfil deseado de forma rápida, objetiva y sin sesgos.
+
+3
+
+Adaptador de Lecciones Educativas (Educación y Capacitación)
+
+Adapta cualquier lección al nivel y necesidades específicas de cada alumno en segundos.
+
+4
+
+Generador de Reportes Financieros (Finanzas y Contabilidad)
+
+Transforma reportes financieros en auditorías completas + resúmenes ejecutivos + recomendaciones accionables.
+
+5
+
+Auditor y Planificador de Proyectos (Gestión de Proyectos)
+
+Audita cualquier proyecto y genera automáticamente plan de acción, timeline y compromisos auditables.
+
+
+
+Elegí la opción número: ___  Nombre del asistente elegido: ___________________________
+
+
+
+Mi Prompt Maestro Completo (escríbelo aquí, listo para copiar-pegar en ChatGPT, Gemini o Perplexity):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Autoevaluación — Componentes que debes haber incluido (marca con ✓ antes de entregar):
+
+
+
+☐   Rol claro y profesional
+
+☐   Contexto específico de mi negocio/situación
+
+☐   Instrucción con verbo fuerte
+
+☐   Restricciones claras
+
+☐   Formato de salida útil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GUÍA DE OBSERVACIÓN — USO EXCLUSIVO DEL INSTRUCTOR
+
+
+
+El instructor observa al participante mientras construye su prompt individual (después de la demostración en vivo). Marca "Sí" o "No" según se observe el desempeño. Cada criterio vale 10 puntos (máximo 60 puntos). La calificación se convierte al 50% del total del curso.
+
+
+
+No.
+
+Criterio de Observación
+
+(Desempeño observable)
+
+Sí
+
+No
+
+Puntos
+
+(0 o 10)
+
+Observaciones /
+
+Retroalimentación inmediata
+
+1
+
+El participante elaboró el componente ROL asignando un rol específico, profesional y relevante para la tarea.
+
+☐
+
+☐
+
+
+
+
+
+2
+
+El participante construyó el componente CONTEXTO incluyendo información relevante, suficiente y concreta del negocio o situación.
+
+☐
+
+☐
+
+
+
+
+
+3
+
+El participante redactó la INSTRUCCIÓN iniciando con un verbo de acción fuerte y claro (Genera, Redacta, Analiza, Sintetiza, Diseña, etc.).
+
+☐
+
+☐
+
+
+
+
+
+4
+
+El participante definió las RESTRICCIONES con límites claros que evitan ambigüedad (longitud, tono, exclusiones, validación de datos).
+
+☐
+
+☐
+
+
+
+
+
+5
+
+El participante definió el FORMATO de salida de manera específica y útil (tabla, lista, Markdown, JSON, correo electrónico, etc.).
+
+☐
+
+☐
+
+
+
+
+
+6
+
+El participante integró los cinco componentes en un solo prompt coherente, fluido y listo para copiar-pegar en la herramienta de IA.
+
+☐
+
+☐
+
+
+
+
+
+
+
+Calificación total: ______ / 60 puntos   (Equivale al 50% del curso)
+
+Observaciones y retroalimentación inmediata del instructor:
+
+
+
+Firma del instructor: ____________________________   Fecha: ____________
+
+
+
+EVALUACIÓN FINAL — Cierre del Curso
+
+
+
+Nombre del participante:
+
+____________________________
+
+Fecha:
+
+_______
+
+
+
+Objetivo: Evaluar tu capacidad de crear una solución aplicable y tu comprensión de los principios éticos y teóricos del uso de IA. Valor: 50% del total del curso.
+
+
+
+Parte I — El Desafío del Asistente (Proyecto Práctico)
+
+Contexto: Vas a 'contratar' a la IA para resolver el problema que identificaste en tu Bitácora inicial durante el Módulo I.
+
+
+
+1. Título del proceso a automatizar:
+
+
+
+
+
+
+
+2. Estructura de tu Prompt Maestro Final:
+
+
+
+ROL — Define la experticia del asistente IA:
+
+
+
+
+
+
+
+
+
+CONTEXTO — La 'Mesa de Trabajo': datos necesarios (sin información confidencial real):
+
+
+
+
+
+
+
+
+
+
+
+INSTRUCCIÓN — Verbo de acción + objetivo claro:
+
+
+
+
+
+
+
+
+
+RESTRICCIONES — Límites, tono, consideraciones éticas:
+
+
+
+
+
+
+
+
+
+FORMATO — Estructura de la salida visual:
+
+
+
+
+
+
+
+
+
+3. Auto-Auditoría Ética (marca con ✓):
+
+
+
+¿Este prompt pide generar información falsa o engañosa?    [ ] Sí   [ ] No
+
+¿Incluí datos confidenciales reales (cuentas, nombres de clientes)?   [ ] Sí   [ ] No   (Si es Sí, corrígelo antes de entregar.)
+
+¿El uso que daré a esta salida respeta los derechos de terceros?   [ ] Sí   [ ] No
+
+
+
+
+
+Parte II — Validación de Conceptos (Teoría)
+
+Selecciona la mejor opción para cada pregunta.
+
+
+
+1. ¿Por qué es mejor pedirle a la IA que 'Actúe como un experto'?
+
+Para que sea más educada.
+
+Porque activa la arquitectura 'Mezcla de Expertos' (MoE), priorizando la información más relevante y reduciendo errores.
+
+No tiene ningún efecto real.
+
+
+
+2. Tu IA inventó un dato estadístico que tú no le proporcionaste. Esto se llama:
+
+Creatividad computacional.
+
+Una 'Alucinación'.
+
+Un error de conexión.
+
+
+
+3. ¿Quién es el responsable final de la veracidad del contenido generado por IA?
+
+La empresa creadora de la IA (OpenAI, Google).
+
+La computadora.
+
+El usuario (Tú) que actúa como el 'filtro humano'.
+
+
+
+
+
+RÚBRICA DE EVALUACIÓN — USO EXCLUSIVO DEL INSTRUCTOR
+
+
+
+Clave de Respuestas — Parte II (Teoría):  1-(b)   2-(b)   3-(c)
+
+
+
+Criterio
+
+Excelente
+
+(4 pts)
+
+Satisfactorio
+
+(3 pts)
+
+En Desarrollo
+
+(2 pts)
+
+Requiere Apoyo
+
+(1 pt)
+
+Definición del ROL
+
+Específico y con matices (ej. 'Abogado mercantil con 10 años de exp').
+
+Claro pero genérico (ej. 'Abogado').
+
+Confuso o poco relevante para la tarea.
+
+Ausente.
+
+Calidad del CONTEXTO
+
+Rico en detalles relevantes. Sitúa perfectamente el problema. Sin datos sensibles.
+
+Contexto básico suficiente para operar.
+
+Muy vago, obliga a la IA a adivinar.
+
+Ausente o incluye datos privados (riesgo).
+
+INSTRUCCIÓN (Verbos)
+
+Verbo de acción imperativo y claro. Objetivo medible.
+
+Instrucción comprensible.
+
+Usa lenguaje pasivo o ambiguo ('quiero ver si puedes...').
+
+No hay instrucción clara.
+
+RESTRICCIONES (Control)
+
+Define longitud, tono, exclusiones y validación de datos.
+
+Define al menos una restricción básica (longitud o tono).
+
+Restricciones irrelevantes o contradictorias.
+
+Ausente.
+
+APLICABILIDAD
+
+El resultado es una herramienta lista para usar en su negocio mañana.
+
+Requiere edición menor para ser útil.
+
+Es un ejercicio teórico, difícil de aplicar en la realidad.
+
+No resuelve el problema planteado.
+
+
+
+Escala de Calificación del Proyecto Final:
+
+18-20 puntos: Dominio Avanzado (Certificado con Mención).
+
+14-17 puntos: Competente (Aprobado).
+
+Menos de 14 puntos: Requiere refuerzo en Módulo II.
+
+
+
+
+
+
+
+Evaluación Final — Calificaciones del instructor
+
+Calificación Parte I (Proyecto Prompt): ______/20 pts   |   Parte II (Teoría): ______/3 pts   |   TOTAL: ______/23 pts
+
+Comentario de aplicabilidad (cómo mejorar el prompt para el negocio real del participante):
+
+
+
+Firma: ____________________________   Fecha: ____________
+
+
+
+Bibliografía
+
+
+
+Díaz, E. (Diciembre, 2012). Estilos de aprendizaje. Revista Eídos. Disponible en: http://www.ute.edu.ec/posgrados/eidos5.pdf#page=5
+
+
+
+OpenAI. (2024). GPT-4 Technical Report. arXiv preprint. Disponible en: https://arxiv.org/abs/2303.08774
+
+
+
+Google DeepMind. (2024). Gemini: A Family of Highly Capable Multimodal Models. Disponible en: https://deepmind.google/technologies/gemini/
+
+
+
+Brown, T., et al. (2020). Language Models are Few-Shot Learners. NeurIPS 2020. Disponible en: https://proceedings.neurips.cc/paper/2020
+
+
+
+CONOCER. (2023). Estándar de Competencia EC0301: Diseño de cursos de formación del capital humano. México: Secretaría de Economía.
+
+
+
+
+
+
+
+— B Smarter · IA Estratégica y Diseño de Instrucciones Proactivas —
+

@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.firebase
+functions/lib
+mcp-server/lib
+
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+*-firebase-adminsdk-*.json
+service-account*.json
+firebase-admin-key*.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local snapshots and one-off scripts tied to a specific Firebase account
+/src.zip
+/seed_admin.js
+/walkthrough1803
+
+# Temporary bundle experiments
+/functions/scratch_*.js

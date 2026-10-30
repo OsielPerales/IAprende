@@ -1,0 +1,1962 @@
+
+
+
+
+
+
+Manual del Instructor
+
+IA Estratégica y Diseño de Instrucciones 
+
+[ IMAGEN DE PORTADA ]
+
+Descripción: Vista cenital de un instructor frente a un grupo de trabajo,
+
+con una pantalla al fondo mostrando una interfaz de IA.
+
+Nodos de red neuronal superpuestos en tonos azul eléctrico sobre fondo oscuro,
+
+simbolizando la conexión entre el conocimiento humano y la inteligencia artificial.
+
+
+
+
+
+Diseñador Instruccional:
+
+Osiel Alejandro Perales Jimenez
+
+
+
+Índice
+
+
+
+Sección
+
+Página
+
+Introducción
+
+3
+
+Estructura del Taller
+
+3
+
+Modalidad del Taller
+
+3
+
+Requerimientos del Taller
+
+4
+
+Carta Descriptiva
+
+5
+
+Secuencia Instruccional — Apertura/Encuadre
+
+7
+
+Secuencia Instruccional — Desarrollo
+
+9
+
+Secuencia Instruccional — Cierre
+
+12
+
+Sugerencias para el Desarrollo de los Temas
+
+13
+
+Primera Parte: Módulo I — Expositiva
+
+13
+
+Segunda Parte: Módulo II — Demostrativa
+
+14
+
+Tercera Parte: Módulo III — Diálogo-Discusión
+
+14
+
+Cierre: Conclusiones, Logro de Expectativas y Objetivos
+
+15
+
+Instrumentos de Evaluación
+
+16
+
+Evaluación Diagnóstica
+
+16
+
+Evaluación Formativa — Guía de Observación
+
+17
+
+Evaluación Sumativa — Proyecto Final y Conceptos
+
+18
+
+Bibliografía
+
+20
+
+
+
+Introducción
+
+La intención principal del presente manual es proporcionar una guía para el instructor que permita realizar la labor de instrucción de forma eficiente, con base en los procedimientos didácticos y andragógicos que favorezcan el aprendizaje eficaz del presente curso.
+
+Este manual contiene información práctica sobre los aspectos que se deben considerar para el desarrollo del curso, incluyendo la carta descriptiva completa, la secuencia instruccional detallada, sugerencias para el desarrollo de cada tema, los instrumentos de evaluación con sus respectivas guías de respuesta y la bibliografía de referencia.
+
+
+
+Estructura del Taller
+
+El curso-taller IA Estratégica y Diseño de Instrucciones Proactivas inicia con el Encuadre, donde se presentarán la bienvenida, técnica rompe hielo (Mapa de Expectativas), los objetivos generales y particulares, el contenido temático organizado por módulos, los lineamientos de operación del curso y los tipos de evaluaciones, su duración, ponderación y relevancia.
+
+Durante el Desarrollo se abordarán tres módulos: Módulo I (Encuadre y Fundamentos: cambio de paradigma de buscadores a motores de razonamiento, identificación de procesos repetitivos), Módulo II (Estructura Maestra del Prompt: Rol, Contexto, Instrucción, Restricciones y Formato, con demostración en vivo y práctica en parejas) y Módulo III (Sesgos, Alucinaciones y Ética de la IA: diálogo-discusión grupal, detección y corrección de sesgos).
+
+Finalmente se desarrollará el proceso de Cierre, considerando los apartados de Conclusiones, Logro de Expectativas, Logro de Objetivos, Sugerencias de Continuidad de Aprendizaje y las evaluaciones sumativa y de satisfacción.
+
+Este manual contiene los instrumentos de evaluación con guías de respuesta, la carta descriptiva completa y la bibliografía utilizada para el diseño del curso.
+
+
+
+Modalidad del Taller
+
+La forma de impartición de este curso-taller es de carácter presencial, caracterizada por la interrelación entre los contenidos teóricos y los ejercicios prácticos. El instructor expondrá los fundamentos teóricos y procedimentales, que servirán de sustento para que los participantes realicen los ejercicios diseñados, conduciéndolos a desarrollar competencias prácticas en el diseño de instrucciones estratégicas para IA.
+
+Este curso está basado en un enfoque constructivista que permite que el participante construya su conocimiento a partir de los esquemas que ya posee, activando sus aprendizajes previos y relacionándolos con el desarrollo del curso-taller. Las técnicas instruccionales utilizadas son: Expositiva Dialogada (Módulo I), Demostrativa con herramientas de IA en tiempo real (Módulo II) y Diálogo-Discusión colaborativa (Módulo III).
+
+
+
+Requerimientos del Taller
+
+
+
+Requerimientos en
+
+instalaciones,
+
+mobiliario y distribución:
+
+Requerimientos en
+
+equipo de apoyo:
+
+Requerimientos en
+
+materiales didácticos
+
+de apoyo:
+
+Requerimientos
+
+humanos:
+
+Otros
+
+requerimientos:
+
+• Sala equipada con proyector o pantalla grande.
+
+• Espacio con conexión estable a internet.
+
+• Mesas de trabajo para equipos de 4-5 personas.
+
+• Sillas suficientes para todos los participantes (4 a 12).
+
+• Contactos eléctricos.
+
+• Computadora/laptop por participante (min. 1 cada 2).
+
+• Proyector o pantalla grande.
+
+• Cables, extensiones y regletas.
+
+• Apuntador láser o control de presentación.
+
+• Bocinas.
+
+• Manual del Instructor.
+
+• Manual del Participante.
+
+• Lista de asistencia.
+
+• Lista de verificación de requerimientos.
+
+• Evaluación Diagnóstica (cuestionario).
+
+• Evaluación Formativa (guía de observación).
+
+• Evaluación Sumativa (proyecto + cuestionario).
+
+• Evaluación de Satisfacción.
+
+• Hojas, plumas y marcadores.
+
+• Presentación en PowerPoint.
+
+• Post-it y rotafolios.
+
+• Instructor especializado en IA y el contenido del curso.
+
+• Apoyo técnico (opcional) para resolución de problemas de conexión.
+
+• Acceso a plataformas de IA (ChatGPT, Gemini, Perplexity.ai).
+
+• Cuenta de Google (para Google Docs/Sheets/Forms).
+
+• Tarjetas con ejemplos de prompts y casos prácticos.
+
+• Botiquín de primeros auxilios.
+
+• Señalización de rutas de evacuación.
+
+
+
+⚠ Nota: Realizar la verificación de requerimientos 20-30 minutos antes del inicio del curso conforme a la lista de verificación. Verificar que todas las computadoras tengan acceso a internet y que las plataformas de IA estén disponibles.
+
+
+
+Carta Descriptiva
+
+
+
+C A R T A   D E S C R I P T I V A
+
+INFORMACIÓN GENERAL
+
+Nombre del Curso-taller:
+
+IA Estratégica y Diseño de Instrucciones Proactivas
+
+Nombre del Facilitador/Instructor:
+
+Osiel Alejandro Perales Jimenez
+
+Lugar de
+
+Instrucción:
+
+Duración:
+
+Perfil del participante:
+
+No. de
+
+participantes:
+
+Presencial en salón o aula habilitada
+
+120 minutos
+
+Horario: ________
+
+Fecha: ________
+
+Docentes, emprendedores, trabajadores, estudiantes universitarios y cualquier persona interesada en aplicar IA en su vida profesional o personal.
+
+Habilidades cognoscitivas: Conocimientos básicos en uso de tecnología. Comprensión lectora y análisis de información.
+
+Habilidades psicomotoras: Manejo mínimo de dispositivos digitales.
+
+Habilidades afectivas: Actitud crítica y ética frente al uso de la tecnología. Disposición para la participación activa.
+
+4 a 12
+
+
+
+Objetivo General: Describe la demostración de un conocimiento, desempeño o producto, resultado del aprendizaje del participante.
+
+Sujeto:
+
+Acción o comportamiento:
+
+Condición de operación:
+
+El Participante
+
+Desde el inicio y durante el taller de manera asistida por el instructor, así como en su interacción diaria con la IA, el participante
+
+Aprenderá a diseñar y aplicar prompts estratégicos utilizando la Estructura Maestra (Rol, Contexto, Instrucción, Restricciones, Formato) para automatizar procesos personales y empresariales.
+
+Mediante ejercicios prácticos, retroalimentación por pares y evaluaciones formativas; para así optimizar productividad, reducir tiempos en tareas mecánicas y fomentar un uso responsable y ético de la IA en sus negocios.
+
+
+
+
+
+
+
+Objetivos Particulares: Describen la demostración de un conocimiento, desempeño o producto, resultado del aprendizaje del participante.
+
+No.
+
+Sujeto:
+
+Acción o comportamiento:
+
+Condición de operación:
+
+Temas:
+
+1
+
+El Participante
+
+Comprenderá el cambio de paradigma de buscadores a motores de razonamiento e identificará procesos repetitivos en su negocio susceptibles de automatización.
+
+En un taller práctico con herramientas de IA accesibles, bajo guía ética y de eficiencia, para diagnosticar oportunidades de mejora mediante IA en su contexto profesional.
+
+Módulo I: Encuadre y Fundamentos
+
+• Cambio de paradigma
+
+• Motores de razonamiento
+
+• Puntos de dolor
+
+• Bitácora de procesos
+
+2
+
+El Participante
+
+Aprenderá y aplicará la Estructura Maestra del Prompt (Rol, Contexto, Instrucción, Restricciones, Formato) en ejemplos adaptados a su entorno.
+
+Mediante ejercicios prácticos en parejas y plantillas, para generar prompts precisos y reutilizables que optimicen la interacción con IA.
+
+Módulo II: Estructura Maestra
+
+• Rol y Arquitectura MoE
+
+• Ventana de Contexto
+
+• Instrucción y Formato
+
+• Restricciones y Tokens
+
+3
+
+El Participante
+
+Desarrollará técnicas para corregir prompts, detectar sesgos y evitar alucinaciones, compartiendo conocimientos con sus compañeros.
+
+Mediante la Técnica Diálogo-Discusión y reflexión grupal, para asegurar la aplicación continua y responsable de la IA con precisión técnica y conciencia ética.
+
+Módulo III: Sesgos y Ética
+
+• Alucinaciones en IA
+
+• Tipos de sesgo
+
+• Filtro humano
+
+• Ética profesional
+
+
+
+Instalaciones y
+
+mobiliario:
+
+Equipo de
+
+apoyo:
+
+Materiales
+
+didácticos:
+
+Requerimientos
+
+humanos:
+
+Otros
+
+requerimientos:
+
+Salón presencial
+
+Mesas de trabajo
+
+Sillas para 4-12
+
+Conexión internet
+
+Contactos eléctricos
+
+Computadoras/tablets
+
+Proyector + pantalla
+
+Apuntador láser
+
+Extensiones
+
+Bocinas
+
+Manual del Participante
+
+Manual del Instructor
+
+Eval. Diagnóstica
+
+Eval. Formativa
+
+Eval. Sumativa
+
+Eval. Satisfacción
+
+Lista de asistencia
+
+Presentación PPT
+
+Hojas y plumas
+
+Post-it
+
+Instructor especializado
+
+en IA y el contenido.
+
+Apoyo técnico
+
+(opcional)
+
+Acceso a ChatGPT,
+
+Gemini, Perplexity
+
+Cuenta de Google
+
+Tarjetas de prompts
+
+Botiquín primeros
+
+auxilios
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Formas, momentos y criterios de evaluación: La evaluación se llevará a cabo durante la Apertura, el Desarrollo y el Cierre del Taller. Calificación mínima aprobatoria: 80%.
+
+Aspecto a evaluar
+
+Valor/Porcentaje
+
+Instrumento de evaluación
+
+Momento de aplicación
+
+Evaluación Diagnóstica
+
+Referencial (sin calificación)
+
+Cuestionario de 5 preguntas abiertas
+
+Al inicio del taller
+
+Evaluación Formativa
+
+50% del total
+
+Guía de Observación — construcción del Prompt Maestro
+
+Final del Módulo II
+
+Evaluación Sumativa
+
+50% del total
+
+Proyecto Prompt Maestro Final + 3 preguntas de teoría
+
+Cierre del taller
+
+
+
+COMPROBACIÓN DE LA EXISTENCIA Y EL FUNCIONAMIENTO DE LOS RECURSOS REQUERIDOS
+
+
+
+Etapa
+
+Actividades
+
+Duración
+
+Material y Equipo
+
+Comprobación de la existencia y funcionamiento de los recursos requeridos para la sesión.
+
+1. Aplicar la Lista de verificación de requerimientos.
+
+2. Realizar pruebas de funcionamiento del equipo y conexión a internet.
+
+3. Verificar la distribución del mobiliario y equipo.
+
+4. Verificar la suficiencia de material conforme al número de participantes.
+
+5. Comprobar acceso a plataformas de IA (ChatGPT/Gemini/Perplexity).
+
+20-30 min antes del inicio
+
+Lista de verificación
+
+de requerimientos
+
+Manual del Instructor
+
+Cuentas de IA activas
+
+
+
+APERTURA O ENCUADRE
+
+
+
+Tiempo
+
+Tema
+
+Actividades
+
+Instructor
+
+Participantes
+
+Técnica
+
+Material y
+
+Equipo de Apoyo
+
+3 min
+
+Presentación del instructor
+
+El instructor se presenta ante el grupo.
+
+a) Dar la bienvenida de forma cálida y profesional.
+
+b) Compartir brevemente su trayectoria en IA y emprendimiento.
+
+c) Generar confianza y establecer rapport con el grupo.
+
+Escuchan atentamente. Generan expectativa sobre los temas del curso.
+
+Exposición dialogada
+
+Diapositivas, proyector, computadora.
+
+5 min
+
+Presentación de participantes
+
+Técnica Rompe Hielo:
+
+'Mapa de Expectativas'
+
+Romper el hielo inicial. Conocer expectativas. Establecer compromiso implícito de que el curso buscará 'resolver' esas expectativas.
+
+a) Indicar que cada participante compartirá: nombre, rol profesional, un reto que espera que la IA resuelva y un reto que cree que la IA nunca podrá resolver.
+
+b) Dar 45 segundos por persona.
+
+c) Anotar los retos en la pizarra/virtual creando un 'mapa visual' de expectativas.
+
+d) Destacar patrones comunes y mencionar: 'Durante este curso aprenderemos a diseñar estrategias que pueden ayudar con estos retos.'
+
+e) Propiciar ambiente de escucha activa y celebración de la diversidad de contextos.
+
+f) Controlar el tiempo asegurando que todos participen.
+
+a) Se presentan uno a uno (nombre, ocupación, reto con IA, reto sin IA).
+
+b) Escuchan activamente a sus compañeros.
+
+c) Identifican puntos en común con los retos del grupo.
+
+Técnica Rompe Hielo grupal:
+
+Mapa de Expectativas
+
+Pizarra virtual o física, rotafolio, plumones.
+
+3 min
+
+Presentación del curso:
+
+Objetivo General
+
+El instructor presenta el objetivo general del taller.
+
+a) Presentar el objetivo completo en diapositiva: 'El participante aprenderá a diseñar y aplicar prompts estratégicos utilizando la Estructura Maestra...'
+
+b) Explicar los beneficios: transformar la IA en un multiplicador de productividad.
+
+c) Conectar el objetivo con los retos mencionados en el rompe hielos.
+
+Identifican la relación entre el objetivo del curso y sus retos profesionales reales. Preguntan o comentan si se alinea con sus necesidades.
+
+Exposición
+
+Diapositivas con objetivo general.
+
+3 min
+
+Objetivos Particulares
+
+Presentar los 3 objetivos particulares del taller.
+
+a) Presentar cada objetivo particular de forma detallada:
+
+— Módulo I: Comprenderá el cambio de paradigma.
+
+— Módulo II: Aprenderá y aplicará la Estructura Maestra del Prompt.
+
+— Módulo III: Desarrollará actitudes colaborativas y técnicas anti-sesgo.
+
+b) Aclarar dudas sobre los objetivos.
+
+Escuchan atentamente. Identifican qué módulo les interesa más o cuál atiende mejor su reto personal.
+
+Exposición
+
+Diapositivas con cada objetivo.
+
+3 min
+
+Descripción general
+
+del desarrollo del curso
+
+Presentar la estructura de los 3 momentos del curso.
+
+a) Explicar los 3 momentos:
+
+— Momento 1 (35 min): Encuadre y Fundamentos.
+
+— Momento 2 (65 min): Estructura Maestra + Evaluación.
+
+— Momento 3 (20 min): Cierre y Evaluación Final.
+
+b) Mostrar el temario completo organizado por módulos.
+
+Comprenden la estructura y duración del curso. Saben qué esperar en cada etapa.
+
+Exposición
+
+Diapositivas con mapa del curso.
+
+2 min
+
+Temario del curso
+
+Presentar el temario completo por módulos.
+
+a) Mostrar el temario: Módulo I (Lecciones 1.1, 1.2, 1.3), Módulo II (Lecciones 2.1, 2.2, 2.3, 2.4), Módulo III (Lecciones 3.1, 3.2, 3.3).
+
+b) Destacar los momentos de práctica y evaluación.
+
+Toman nota del temario. Identifican los temas de mayor interés.
+
+Exposición
+
+Matriz de planificación, diapositivas.
+
+3 min
+
+Beneficios del curso
+
+Conectar los beneficios laborales y personales con la experiencia del grupo.
+
+a) Presentar beneficios laborales: reducción hasta 70% del tiempo en tareas mecánicas, mejora en precisión, generación de herramientas reutilizables.
+
+b) Presentar beneficios personales: desarrollo de competencias digitales, conciencia ética, certificación EC0301.
+
+c) Relacionar con ejemplos reales según los retos mencionados.
+
+Identifican 1-2 beneficios concretos aplicables a su negocio/trabajo. Aumenta motivación para participar.
+
+Discusión grupal
+
+Ejemplos impresos o en pizarra.
+
+2 min
+
+Tipos de evaluación,
+
+instrumentos y momentos
+
+Explicar el sistema de evaluación del curso.
+
+a) Presentar las 3 evaluaciones:
+
+— Diagnóstica: Al inicio, referencial, sin calificación.
+
+— Formativa: Final Módulo II, 50%, guía de observación.
+
+— Sumativa: Cierre, 50%, proyecto + cuestionario.
+
+b) Mencionar que la calificación mínima aprobatoria es 80%.
+
+c) Distribuir la Evaluación Diagnóstica.
+
+Comprenden el sistema de evaluación. Se desinhiben al saber que la diagnóstica no tiene calificación.
+
+Exposición
+
+Rúbrica/tabla de evaluación en diapositivas.
+
+3 min
+
+Acuerdos y compromisos:
+
+Expectativas del grupo
+
+Establecer el contrato de aprendizaje.
+
+a) Invitar a los participantes a comprometerse verbalmente con 3 cosas: asistencia completa, participación activa, aplicar al menos 1 prompt en su negocio esta semana.
+
+b) Registrar compromisos en post-it para el 'Muro de Compromisos'.
+
+c) Establecer las reglas de operación del curso (puntualidad, uso apropiado de dispositivos, respeto, etc.).
+
+Expresan su compromiso. Colocan su post-it de compromiso en el Muro. Proponen lineamientos adicionales.
+
+Técnica grupal
+
+Contrato de Aprendizaje
+
+Post-it, pizarra, rotafolio.
+
+5 min
+
+Evaluación Diagnóstica
+
+Aplicar la evaluación diagnóstica inicial.
+
+a) Distribuir el formato de evaluación diagnóstica.
+
+b) Leer en voz alta las instrucciones.
+
+c) Aclarar dudas.
+
+d) Tomar tiempo (5 minutos).
+
+e) Recoger los formatos. Hojear rápidamente para ajustar el nivel del curso si es necesario.
+
+Responden con honestidad las 5 preguntas abiertas sobre IA. No se preocupan por respuestas correctas.
+
+Evaluativa
+
+Formulario impreso o digital, lapiceros.
+
+TIEMPO TOTAL: 35 minutos
+
+
+
+DESARROLLO
+
+
+
+Tiempo
+
+Tema
+
+Actividades
+
+Instructor
+
+Participantes
+
+Técnica
+
+Material y
+
+Equipo de Apoyo
+
+15 min
+
+MÓDULO I:
+
+Encuadre y
+
+Fundamentos
+
+— Cambio de
+
+paradigma
+
+— Motores de
+
+razonamiento
+
+— Puntos de dolor
+
+El instructor aplica la TÉCNICA EXPOSITIVA para presentar el cambio de paradigma de IA.
+
+a) Presentar el objetivo del tema: 'El participante comprenderá el cambio de paradigma de buscadores a motores de razonamiento e identificará procesos repetitivos en su negocio.'
+
+b) Introducir el tema con la diferencia entre Google y ChatGPT/Gemini.
+
+c) Recuperar experiencia previa: ¿Qué saben sobre IA? ¿Han usado herramientas de IA?
+
+d) Desarrollar el contenido:
+
+— Buscadores: Lista de links.
+
+— Motores de razonamiento: Procesan, redactan, analizan.
+
+— La IA funciona mediante predicción probabilística de tokens.
+
+e) Usar ejemplos relacionados con emprendedores y PYMES.
+
+f) Realizar síntesis de los puntos clave.
+
+g) Preguntas de verificación:
+
+— ¿Cuál es la diferencia principal entre un buscador y un motor de razonamiento?
+
+— ¿Por qué decimos que la IA no 'piensa' como un humano?
+
+h) Promover comentarios sobre utilidad de la IA en sus negocios.
+
+i) Actividad Bitácora: Los participantes identifican 3-5 procesos repetitivos de su trabajo.
+
+Responden con base en sus experiencias. Recuperan y externalizan sus conocimientos previos. Completan la Bitácora de Procesos identificando sus puntos de dolor.
+
+TÉCNICA EXPOSITIVA:
+
+Exposición dialogada con preguntas de recuperación y verificación.
+
+Pizarra, diapositivas, computadora. Bitácora de procesos (hoja de trabajo).
+
+25 min
+
+MÓDULO II:
+
+Estructura
+
+Maestra del
+
+Prompt
+
+
+
+— Componentes
+
+— Rol y MoE
+
+— Ventana de
+
+Contexto
+
+— Instrucción
+
+y Formato
+
+— Restricciones
+
+y Tokens
+
+El instructor aplica la TÉCNICA EXPOSITIVA + DEMOSTRATIVA para enseñar los 5 componentes del Prompt.
+
+a) Presentar el objetivo: 'El participante aprenderá y aplicará la Estructura Maestra del Prompt.'
+
+b) Introducir el tema explicando que un prompt proactivo comienza con verbo fuerte.
+
+c) Recuperar experiencia previa: ¿Han escrito prompts antes? ¿Qué problemas han tenido con las respuestas de la IA?
+
+d) Desarrollar cada componente con diapositiva y ejemplo:
+
+— ROL: Activa neuronas/nodos MoE correctos del modelo.
+
+— CONTEXTO: La ventana de trabajo, información relevante.
+
+— INSTRUCCIÓN: Verbos fuertes (Sintetiza, Categoriza, Redacta).
+
+— RESTRICCIONES: Límites claros (no menciones, no excedas).
+
+— FORMATO: Tablas, Markdown, JSON, CSV.
+
+e) Pasar a la TÉCNICA DEMOSTRATIVA:
+
+— Presentar objetivo de la demostración.
+
+— Partir de un caso de negocio real (panadería, restaurante, etc.).
+
+— Construir el ROL en vivo en la herramienta de IA.
+
+— Añadir el CONTEXTO en vivo.
+
+— Redactar la INSTRUCCIÓN con verbo fuerte en vivo.
+
+— Establecer RESTRICCIONES en vivo.
+
+— Definir el FORMATO en vivo.
+
+— Ejecutar el prompt completo en la IA en tiempo real.
+
+— Invitar a participantes a identificar cada componente.
+
+Escuchan atentamente y participan cuando se les pregunta. Observan la demostración en vivo. Identifican cada componente en el prompt demostrado. Hacen preguntas sobre casos propios.
+
+TÉCNICA EXPOSITIVA:
+
+Exposición dialogada.
+
+
+
+TÉCNICA DEMOSTRATIVA:
+
+Demostración en vivo con herramienta de IA.
+
+Diapositivas, handouts de plantillas, computadoras con acceso a IA.
+
+20 min
+
+MÓDULO II
+
+(continuación)
+
+Práctica en
+
+parejas y
+
+Evaluación
+
+Formativa
+
+El instructor facilita la práctica en parejas y aplica la Evaluación Formativa.
+
+a) Indicar a los participantes que formarán parejas.
+
+b) Solicitar que cada participante construya individualmente un Prompt Maestro completo adaptado a su propio negocio o contexto, eligiendo uno de los 5 ejemplos de asistentes IA.
+
+c) Circular por el salón observando el trabajo de cada participante.
+
+d) Resolver dudas individualmente durante el proceso.
+
+e) Aplicar la EVALUACIÓN FORMATIVA:
+
+— Observar que el prompt incluya los 5 componentes.
+
+— Completar la Guía de Observación para cada participante.
+
+— Retroalimentar señalando los componentes correctos e indicando los que requieren ajuste.
+
+— Otorgar calificación formativa con base en la guía de observación.
+
+f) Resolver dudas finales sobre la construcción de prompts.
+
+Construyen individualmente su Prompt Maestro personalizado. Eligen su ejemplo de asistente IA. Hacen anotaciones y preguntas al instructor. Reciben retroalimentación.
+
+PRÁCTICA
+
+EN PAREJAS
+
+(construcción
+
+individual con
+
+apoyo del
+
+compañero)
+
+Hoja de trabajo de Evaluación Formativa, guía de observación del instructor.
+
+3 min
+
+TÉCNICA
+
+ENERGIZANTE:
+
+'El Prompt
+
+Rápido'
+
+Reactivar la energía del grupo y consolidar el aprendizaje de la Estructura Maestra.
+
+a) Pedir a todos que se pongan de pie.
+
+b) Decir un tema de negocio al azar (ej. 'marketing para heladería', 'respuesta a cliente insatisfecho').
+
+c) Dar 15 segundos a cada participante para decir el ROL que asignaría a la IA.
+
+d) Destacar los roles más creativos y útiles.
+
+e) Repetir 3 veces con temas diferentes.
+
+Ejemplo: Tema: 'Un cliente se queja de un producto defectuoso' → Participante: 'Actúa como gerente de atención al cliente con 10 años de experiencia'.
+
+Se ponen de pie y participan activamente. Verbalizan roles creativos. Se retroalimentan entre sí. El ambiente se reactiva.
+
+Técnica
+
+Energizante
+
+Grupal:
+
+El Prompt
+
+Rápido
+
+Lista de ejemplos de temas de negocios.
+
+15 min
+
+MÓDULO III:
+
+Sesgos,
+
+Alucinaciones
+
+y Ética
+
+
+
+— Sesgos de
+
+confirmación
+
+— Alucinaciones
+
+por falta de
+
+contexto
+
+— Sesgos
+
+implícitos
+
+— El Filtro
+
+Humano
+
+El instructor aplica la TÉCNICA DIÁLOGO-DISCUSIÓN para analizar sesgos y alucinaciones.
+
+a) Mencionar el tema a discutir: 'Sesgos y alucinaciones en prompts de IA'.
+
+b) Dividir el grupo en subgrupos de 3-4 personas según tipo de negocio/sector.
+
+c) Establecer reglas: escucha activa, respetar turnos, construir sobre ideas de otros.
+
+d) Abrir la discusión presentando un caso real de sesgo (ej. caso de reclutamiento).
+
+e) Propiciar la discusión de los participantes sobre sus propios casos reales.
+
+f) Moderar la discusión asegurando participación equitativa.
+
+g) Usar ejemplos de diferentes sectores.
+
+h) Cada subgrupo presenta sus conclusiones al grupo.
+
+i) Llegar a una conclusión grupal sobre los tres tipos de sesgo y cómo corregirlos.
+
+Analizan el caso presentado. Discuten en subgrupos. Comparten experiencias propias con sesgos o errores de IA. Presentan conclusiones de su subgrupo.
+
+TÉCNICA
+
+DIÁLOGO-
+
+DISCUSIÓN
+
+Pizarra, formularios de prompt, ficha de caso de análisis.
+
+10 min
+
+Evaluación
+
+Sumativa
+
+/ Final
+
+Aplicar la Evaluación Sumativa al cierre del desarrollo.
+
+a) Indicar alcances e instrucciones de la evaluación, los tipos de preguntas (Proyecto Prompt Maestro Final + 3 preguntas de teoría) y los criterios a evaluar.
+
+b) Distribuir el formato de Evaluación Final.
+
+c) Indicar el tiempo disponible (10 minutos).
+
+d) Circular y aclarar dudas.
+
+e) Recoger los formatos al término.
+
+Leen las instrucciones. Construyen su Prompt Maestro Final integrando todo lo aprendido. Responden las 3 preguntas de teoría.
+
+Evaluativa
+
+Cuestionario/formato de Evaluación Final, plumas.
+
+TIEMPO TOTAL: 88 minutos
+
+
+
+CIERRE
+
+
+
+Tiempo
+
+Tema
+
+Actividades
+
+Instructor
+
+Participantes
+
+Técnica
+
+Material y
+
+Equipo de Apoyo
+
+4 min
+
+Conclusiones
+
+y Resumen
+
+del Curso
+
+'Mi Asistente
+
+del Futuro'
+
+Consolidar los aprendizajes mediante técnica grupal de cierre.
+
+a) Solicitar a los participantes que formen un círculo al centro de la sala.
+
+b) Cada participante comparte en UNA frase: 'Esta semana voy a automatizar [proceso] usando IA en mi [negocio/trabajo].'
+
+c) Anotar compromisos en pizarra o post-its para el 'Muro de Compromisos'.
+
+d) 30 segundos por persona.
+
+e) Destacar la importancia de la acción inmediata.
+
+f) Realizar el resumen ejecutivo de los 3 módulos en diapositiva.
+
+Verbalizan su compromiso específico. Escuchan los compromisos de sus compañeros. Reciben refuerzo positivo.
+
+Técnica grupal
+
+de cierre:
+
+Mi Asistente
+
+del Futuro
+
+Pizarra o post-it para el muro de compromisos, diapositivas de resumen.
+
+3 min
+
+Logro de
+
+Expectativas
+
+Verificar si se cumplieron las expectativas iniciales.
+
+a) Retomar el 'Mapa de Expectativas' creado al inicio.
+
+b) Comparar las expectativas iniciales con los aprendizajes obtenidos.
+
+c) Preguntar: '¿Se cubrió tu expectativa inicial? ¿Qué fue diferente a lo que esperabas?'
+
+Identifican si sus expectativas fueron cubiertas. Retroalimentan con su opinión al grupo.
+
+Discusión
+
+grupal
+
+Lista de expectativas del inicio, pizarra.
+
+3 min
+
+Logro de
+
+Objetivos
+
+Confirmar objetivos alcanzados.
+
+a) Retomar los 3 objetivos particulares presentados al inicio.
+
+b) Solicitar a los participantes que evalúen en escala de 1-5 cada objetivo.
+
+c) Identificar cuáles necesitan mayor refuerzo post-curso.
+
+Autoevalúan su nivel de logro por objetivo. Identifican áreas de mejora.
+
+Auto-
+
+evaluación
+
+Lista de objetivos.
+
+3 min
+
+Sugerencias
+
+de Continuidad
+
+de Aprendizaje
+
+Recomendar prácticas post-taller.
+
+a) Recomendar aplicar prompts en su negocio diariamente.
+
+b) Compartir 3 prompts efectivos con colegas esta semana.
+
+c) Mantenerse actualizado sobre nuevas herramientas de IA.
+
+d) Unirse a comunidades de práctica de IA para PYMES.
+
+Escuchan las sugerencias. Identifican cuál aplicarán primero.
+
+Exposición
+
+Material de apoyo impreso, QR con recursos.
+
+3 min
+
+Referencias
+
+Bibliográficas
+
+Compartir las referencias del curso.
+
+a) Compartir la lista de 5 referencias del curso.
+
+b) Indicar cuáles son más accesibles para lectura básica.
+
+c) Mencionar recursos online gratuitos adicionales.
+
+Toman nota de las referencias. Preguntan cuál recomiendan para comenzar.
+
+Exposición
+
+Lista impresa o digital de referencias.
+
+3 min
+
+Compromisos
+
+de Aplicación
+
+del Aprendizaje
+
+Registrar compromisos específicos.
+
+a) Distribuir la hoja de compromisos.
+
+b) Solicitar que cada participante anote: 1 proceso a automatizar, 1 fecha límite para hacerlo, 1 persona con quien compartir el aprendizaje.
+
+Escriben su compromiso específico en la hoja. Lo firman como contrato personal.
+
+Técnica
+
+individual
+
+Hoja de compromisos.
+
+3 min
+
+Evaluación
+
+de Satisfacción
+
+Obtener retroalimentación sobre el curso.
+
+a) Distribuir la encuesta de satisfacción.
+
+b) Indicar que es anónima y que las respuestas mejoran futuras ediciones.
+
+c) Dar 2-3 minutos para completarla.
+
+d) Recoger los formatos.
+
+Responden honestamente la encuesta. Aprovechan el espacio para dar sugerencias de mejora.
+
+Encuesta
+
+Formulario digital o impreso.
+
+3 min
+
+Cierre
+
+Cierre motivacional y entrega de certificados.
+
+a) Felicitar a los participantes por su participación y compromiso.
+
+b) Destacar 2-3 prompts particularmente creativos o útiles vistos durante el taller.
+
+c) Entregar certificados de participación.
+
+d) Invitar a la foto grupal.
+
+e) Agradecer la asistencia.
+
+Reciben sus certificados. Participan en la foto grupal. Intercambian contactos.
+
+Cierre
+
+motivacional
+
+Certificados, cámara.
+
+TIEMPO TOTAL: 25 minutos
+
+
+
+TIEMPO TOTAL DEL TALLER: 120 minutos (2 horas)
+
+
+
+Sugerencias para el Desarrollo de los Temas
+
+
+
+Primera Parte — Módulo I: Técnica Instruccional Expositiva
+
+Temas a desarrollar con técnica expositiva dialogada:
+
+Cambio de paradigma: de buscadores a motores de razonamiento.
+
+Cómo funciona la IA: predicción probabilística de tokens.
+
+Arquitectura MoE (Mixture of Experts) y el Rol del instructor.
+
+Identificación de puntos de dolor y procesos automatizables.
+
+
+
+Sugerencias para la explicación
+
+Revisar el Manual del Participante para conocer el contenido detallado de cada lección y los ejercicios previstos.
+
+Apoyarse en la presentación de PowerPoint durante el desarrollo del curso, mostrando comparativos visuales entre Google y ChatGPT.
+
+Apoyarse en la bibliografía descrita al final de este documento (OpenAI Technical Report, Google DeepMind).
+
+Usar ejemplos concretos del sector de los participantes. Si el grupo es de restauranteros, todos los ejemplos deben ser de restaurantes.
+
+Facilitar la actividad Bitácora de Procesos: dar máximo 3 minutos para que cada participante liste sus procesos repetitivos.
+
+
+
+Evidencia a demostrar: Conocimiento
+
+Evaluación Diagnóstica (cuestionario de 5 preguntas abiertas) con valor referencial.
+
+Tiempo total del módulo: 15 min.
+
+Actividades de recuperación: ¿Qué es la IA para ti? ¿Han usado herramientas de IA? ¿Qué diferencias notan entre Google y ChatGPT?
+
+
+
+
+
+Segunda Parte — Módulo II: Técnica Instruccional Demostrativa
+
+Temas a desarrollar con técnica demostrativa:
+
+Los 5 componentes de la Estructura Maestra: ROL, CONTEXTO, INSTRUCCIÓN, RESTRICCIONES, FORMATO.
+
+La Arquitectura MoE y por qué el ROL es fundamental.
+
+La Ventana de Contexto como 'mesa de trabajo' de la IA.
+
+Verbos de acción fuertes vs. lenguaje pasivo.
+
+Restricciones y gestión de tokens para eficiencia.
+
+
+
+Sugerencias para la demostración
+
+Preparar con anticipación un caso de negocio real del sector de los participantes. Construirlo componente a componente frente al grupo en la herramienta de IA en tiempo real.
+
+Proyectar la pantalla de la herramienta de IA para que todos vean la respuesta en tiempo real. El impacto visual de ver la IA responder un prompt bien estructurado es la motivación más poderosa.
+
+Comparar siempre: primero ejecutar un prompt sin estructura ('Necesito ayuda con mis clientes') y luego el mismo prompt con la Estructura Maestra. El contraste es pedagógicamente muy efectivo.
+
+Apoyarse en las plantillas del Manual del Participante como guía visual durante la práctica en parejas.
+
+
+
+Evidencia a demostrar: Producto
+
+Evaluación Formativa (Guía de Observación) — cada participante construye su Prompt Maestro.
+
+Tiempo total del módulo: 45 min (25 min expositiva/demostrativa + 20 min práctica + evaluación).
+
+Valor: 50% del puntaje total.
+
+Actividades de práctica: Construcción del Prompt Maestro personalizado elegido de los 5 ejemplos de asistentes IA.
+
+
+
+
+
+Tercera Parte — Módulo III: Técnica Diálogo-Discusión
+
+Temas a desarrollar con técnica diálogo-discusión:
+
+Tipos de alucinaciones en IA y cómo prevenirlas.
+
+Sesgos de confirmación, por falta de contexto y sesgos implícitos del entrenamiento.
+
+El filtro humano: responsabilidad ética del usuario.
+
+Los 3 principios del uso ético de la IA: Verificar, Proteger, Transparar.
+
+
+
+Sugerencias para la discusión
+
+Seleccionar un caso de análisis provocador pero realista (ej. sesgo en reclutamiento con IA). El caso debe generar posturas opuestas en el grupo.
+
+Moderar sin tomar partido. El objetivo es que el grupo llegue a sus propias conclusiones sobre ética y responsabilidad.
+
+Si el grupo es homogéneo (mismo sector), usar casos de otros sectores para ampliar perspectivas.
+
+Guardar 2 minutos al final para una conclusión grupal que el instructor escribe en la pizarra como síntesis del aprendizaje colectivo.
+
+
+
+Evidencia a demostrar: Actitud y Conocimiento
+
+Evaluación Sumativa (Proyecto Prompt Maestro Final + 3 preguntas de teoría).
+
+Tiempo total del módulo: 25 min (15 min discusión + 10 min evaluación sumativa).
+
+Valor: 50% del puntaje total.
+
+Preguntas de discusión: ¿Cuándo la IA te ha dado información incorrecta? ¿Cómo lo detectaste? ¿Qué hiciste?
+
+
+
+Cierre
+
+
+
+Conclusiones
+
+Comprensión del cambio de paradigma: de buscadores a motores de razonamiento.
+
+Dominio de la Estructura Maestra del Prompt: ROL, CONTEXTO, INSTRUCCIÓN, RESTRICCIONES, FORMATO.
+
+Construcción de un Prompt Maestro personalizado aplicable al negocio/trabajo real.
+
+Identificación y corrección de sesgos y alucinaciones en prompts.
+
+Conciencia ética sobre el uso responsable de la IA como filtro humano.
+
+
+
+Logro de Expectativas
+
+El instructor retomará las expectativas capturadas en el 'Mapa de Expectativas' del inicio del curso. Comparará cada expectativa con los aprendizajes obtenidos durante el taller. Se invita a los participantes a señalar cuáles de sus retos iniciales pueden ahora abordar con las herramientas aprendidas.
+
+
+
+Logro de Objetivos
+
+Mediante una autoevaluación rápida (escala 1-5 por objetivo), los participantes verifican el nivel de cumplimiento de los 3 objetivos particulares del curso. El instructor identifica cuáles necesitan mayor refuerzo y proporciona recomendaciones específicas de profundización.
+
+
+
+Sugerencias de Continuidad de Aprendizaje
+
+Aplicar prompts de la Estructura Maestra en su negocio o trabajo diariamente durante la primera semana.
+
+Compartir al menos 3 prompts efectivos con colegas o compañeros de trabajo.
+
+Explorar y comparar las respuestas de ChatGPT, Gemini y Perplexity con el mismo prompt para identificar diferencias.
+
+Mantenerse actualizado sobre nuevas funcionalidades de las herramientas de IA (newsletters, blogs de OpenAI, Google DeepMind).
+
+Unirse a comunidades de práctica de IA para PYMES en LinkedIn o comunidades locales de emprendedores.
+
+Revisar la bibliografía del curso, especialmente los reportes técnicos de OpenAI y Google DeepMind.
+
+
+
+Evidencia a demostrar: Conocimiento / Actitud.
+
+Evaluación Sumativa (Cuestionario + Proyecto Final) con valor: 50% del puntaje total.
+
+
+
+Instrumentos de Evaluación
+
+Diagnóstica
+
+
+
+EVALUACIÓN DIAGNÓSTICA
+
+Nombre del curso:
+
+IA Estratégica y Diseño de Instrucciones
+
+Instructor:
+
+____________________________
+
+Lugar de Impartición:
+
+____________________________
+
+Duración del curso:
+
+120 min    Horario: ____________    Fecha: ____________
+
+Nombre del Participante:
+
+____________________________________________________________
+
+
+
+Instrucciones: Responde las siguientes preguntas con honestidad. No hay respuestas correctas o incorrectas. Su propósito es conocer tu punto de partida. Condiciones: Aplicación individual. Materiales: Lápiz o pluma. Tiempo de ejecución: 5:00 min.
+
+
+
+No.
+
+Pregunta
+
+Respuesta
+
+1
+
+¿Qué es la Inteligencia Artificial para ti en este momento?
+
+
+
+2
+
+¿Has usado herramientas de IA (ChatGPT, Gemini, Copilot)? ¿Con qué frecuencia?
+
+
+
+3
+
+¿Qué diferencia encuentras entre buscar en Google y preguntar a ChatGPT?
+
+
+
+4
+
+¿Qué es un 'prompt' para ti? Descríbelo con tus propias palabras.
+
+
+
+5
+
+Nombra al menos un proceso de tu trabajo que crees podría automatizarse con IA.
+
+
+
+
+
+Guía de respuestas:
+
+Solo referencial. No se contabilizan las respuestas de forma correcta o incorrecta.
+
+Valor: Referencial, sin peso para la aprobación del curso.
+
+Indicaciones: Proporcionar los materiales y hoja de evaluación, leer las instrucciones con los participantes, aclarar dudas si las hay, tomar tiempo e indicar el término.
+
+
+
+Formativa — Guía de Observación
+
+
+
+EVALUACIÓN FORMATIVA — GUÍA DE OBSERVACIÓN
+
+Nombre del curso:
+
+IA Estratégica y Diseño de Instrucciones Proactivas
+
+Instructor:
+
+____________________________
+
+Lugar de Impartición:
+
+____________________________
+
+Duración del curso:
+
+120 min    Horario: ____________    Fecha: ____________
+
+Nombre del Participante:
+
+____________________________________________________________
+
+
+
+Instrucciones para el instructor: Observar al participante mientras construye su Prompt Maestro individual (después de la demostración en vivo). Marcar 'Sí' o 'No' según se observe el desempeño. Cada criterio vale 10 puntos (máximo 60 puntos). La calificación se convierte al 50% del total del curso. Condiciones: Aplicación individual. Tiempo de observación: 20 min.
+
+
+
+No.
+
+Criterio de Observación
+
+(Desempeño observable)
+
+Sí
+
+No
+
+Puntos
+
+(0 o 10)
+
+Observaciones /
+
+Retroalimentación
+
+1
+
+El participante elaboró el componente ROL asignando un rol específico, profesional y relevante para la tarea (incluye título + especialidad + contexto o experiencia).
+
+☐
+
+☐
+
+
+
+
+
+2
+
+El participante construyó el componente CONTEXTO incluyendo información relevante, suficiente y concreta del negocio o situación (sin datos confidenciales reales).
+
+☐
+
+☐
+
+
+
+
+
+3
+
+El participante redactó la INSTRUCCIÓN iniciando con un verbo de acción fuerte y claro en imperativo (Genera, Redacta, Analiza, Sintetiza, Diseña, Evalúa, etc.).
+
+☐
+
+☐
+
+
+
+
+
+4
+
+El participante definió las RESTRICCIONES con límites claros (longitud, tono, exclusiones, validación de datos), que evitan ambigüedad en la respuesta de la IA.
+
+☐
+
+☐
+
+
+
+
+
+5
+
+El participante definió el FORMATO de salida de manera específica y útil (tabla, lista, Markdown, JSON, correo electrónico, estructura con secciones, etc.).
+
+☐
+
+☐
+
+
+
+
+
+6
+
+El participante integró los cinco componentes en un solo prompt coherente, fluido y listo para copiar-pegar en la herramienta de IA elegida.
+
+☐
+
+☐
+
+
+
+
+
+
+
+Guía de respuestas / Escala de calificación:
+
+Criterios esperados: Todos los 6 ítems deben observarse como SÍ en un prompt de calidad.
+
+Valor: 50% sobre la calificación final del curso.
+
+Valor de cada ítem: 10 puntos. Total máximo: 60 puntos = 50% del curso.
+
+Indicaciones: Circular por el salón durante la construcción del prompt. Retroalimentar en el momento, antes de otorgar la calificación final. Señalar el componente faltante y dar 2 minutos adicionales para que el participante lo corrija si es necesario.
+
+Nota: Si el participante elige el Asistente IA incorrecto o no adapta el prompt a su contexto real, orientarlo hacia el ejemplo más afín a su sector.
+
+
+
+Sumativa — Proyecto Final y Validación de Conceptos
+
+
+
+EVALUACIÓN SUMATIVA / FINAL
+
+Nombre del curso:
+
+IA Estratégica y Diseño de Instrucciones Proactivas
+
+Instructor:
+
+____________________________
+
+Lugar de Impartición:
+
+____________________________
+
+Duración del curso:
+
+120 min    Horario: ____________    Fecha: ____________
+
+Nombre del Participante:
+
+____________________________________________________________
+
+
+
+Instrucciones: Parte I: Construye tu Prompt Maestro Final para el proceso que identificaste en tu Bitácora. Parte II: Selecciona la mejor opción para cada pregunta de teoría. Condiciones: Individual. Tiempo: 10 min.
+
+
+
+Parte I — El Desafío del Asistente (Proyecto Práctico)
+
+Título del procesoa automatizar:
+
+____________________________________________
+
+ROL:Defina la experticia del asistente IA:
+
+
+
+CONTEXTO:La 'Mesa de Trabajo' — Datos necesarios (sin información confidencial real):
+
+
+
+INSTRUCCIÓN:Verbo de acción + objetivo claro:
+
+
+
+RESTRICCIONES:Límites, tono, consideraciones éticas:
+
+
+
+FORMATO:Estructura de la salida visual:
+
+
+
+
+
+Parte I — Auto-Auditoría Ética
+
+¿Este prompt pide generar información falsa o engañosa?   [ ] Sí  [ ] No
+
+¿Incluí datos confidenciales reales (cuentas, nombres)?   [ ] Sí  [ ] No  — Si es Sí, bórrelos ahora.
+
+¿El uso que daré a esta salida respeta los derechos de terceros?   [ ] Sí  [ ] No
+
+
+
+Parte II — Validación de Conceptos (Teoría)
+
+Selecciona la mejor opción:
+
+1. ¿Por qué es mejor pedirle a la IA que 'Actúe como un experto'?
+
+a) Para que sea más educada.
+
+b) Porque activa la arquitectura 'Mezcla de Expertos' (MoE), priorizando la información más relevante y reduciendo errores. ✓
+
+c) No tiene ningún efecto real.
+
+
+
+2. Tu IA inventó un dato estadístico que tú no le proporcionaste. Esto se llama:
+
+a) Creatividad computacional.
+
+b) Una 'Alucinación'. ✓
+
+c) Un error de conexión.
+
+
+
+3. ¿Quién es el responsable final de la veracidad del contenido generado por IA?
+
+a) La empresa creadora de la IA (OpenAI, Google).
+
+b) La computadora.
+
+c) El usuario (Tú) que actúa como el 'filtro humano'. ✓
+
+
+
+RÚBRICA DE CALIFICACIÓN — PROYECTO FINAL (USO DEL INSTRUCTOR)
+
+
+
+Criterio
+
+Excelente
+
+(4 pts)
+
+Satisfactorio
+
+(3 pts)
+
+En Desarrollo
+
+(2 pts)
+
+Requiere Apoyo
+
+(1 pt)
+
+Definición del ROL
+
+Específico y con matices (ej. 'Abogado mercantil con 10 años de exp').
+
+Claro pero genérico (ej. 'Abogado').
+
+Confuso o poco relevante para la tarea.
+
+Ausente.
+
+Calidad del CONTEXTO
+
+Rico en detalles relevantes. Sitúa perfectamente el problema. Sin datos sensibles.
+
+Contexto básico suficiente para operar.
+
+Muy vago, obliga a la IA a adivinar.
+
+Ausente o incluye datos privados (riesgo).
+
+INSTRUCCIÓN (Verbos)
+
+Verbo imperativo y claro. Objetivo medible.
+
+Instrucción comprensible.
+
+Usa lenguaje pasivo o ambiguo.
+
+No hay instrucción clara.
+
+RESTRICCIONES
+
+Define longitud, tono, exclusiones y validación de datos.
+
+Define al menos una restricción básica.
+
+Restricciones irrelevantes o contradictorias.
+
+Ausente.
+
+APLICABILIDAD
+
+El resultado es una herramienta lista para usar mañana en su negocio.
+
+Requiere edición menor para ser útil.
+
+Es un ejercicio teórico, difícil de aplicar.
+
+No resuelve el problema planteado.
+
+
+
+Escala de Calificación y Claves de Respuestas:
+
+Claves Parte II (Teoría): 1-(b)   2-(b)   3-(c)
+
+18-20 puntos: Dominio Avanzado (Certificado con Mención).
+
+14-17 puntos: Competente (Aprobado — 80% mínimo requerido).
+
+Menos de 14 puntos: Requiere refuerzo en Módulo II.
+
+Valor total: 50% del curso. Parte I (Proyecto): 20 pts. Parte II (Teoría): 3 pts (correctas). Total: 23 pts convertido a escala del 50%.
+
+Nota para el instructor: Al entregar la evaluación final, no solo dé el puntaje. Escriba un comentario en la sección de Aplicabilidad sugiriendo cómo pueden mejorar ese prompt específico para su negocio real.
+
+Adaptabilidad: Si tiene un grupo puramente de restauranteros, modifique los ejemplos de asistentes IA para que sean del sector restaurantero.
+
+
+
+Bibliografía
+
+
+
+Díaz, E. (Diciembre, 2012). Estilos de aprendizaje. Revista Eídos. http://www.ute.edu.ec/posgrados/eidos5.pdf#page=5
+
+
+
+OpenAI. (2024). GPT-4 Technical Report. arXiv preprint. https://arxiv.org/abs/2303.08774
+
+
+
+Google DeepMind. (2024). Gemini: A Family of Highly Capable Multimodal Models. https://deepmind.google/technologies/gemini/
+
+
+
+Brown, T., et al. (2020). Language Models are Few-Shot Learners. NeurIPS 2020. https://proceedings.neurips.cc/paper/2020
+
+
+
+CONOCER. (2023). Estándar de Competencia EC0301: Diseño de cursos de formación del capital humano. México: Secretaría de Economía.
+
+
+
+
+
+
+
+— B Smarter · Manual del Instructor — IA Estratégica y Diseño de Instrucciones Proactivas —
+

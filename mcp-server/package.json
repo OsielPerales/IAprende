@@ -1,0 +1,22 @@
+{
+  "name": "iaprende-mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone MCP server for iAprende — connect Claude Desktop to the platform",
+  "bin": { "iaprende-mcp": "lib/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node lib/index.js",
+    "dev": "node --watch lib/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "firebase-admin": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3"
+  }
+}
