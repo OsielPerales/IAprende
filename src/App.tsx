@@ -7,6 +7,7 @@ import { AlumnoDashboard, MaestroDashboard, AdminDashboard } from './pages/Dashb
 import { GruposAdmin } from './pages/GruposAdmin'
 import { CursosMaestro, CursoEditor } from './pages/CursoEditor'
 import { CursosAlumno, CursoViewer } from './pages/CursoViewer'
+import { CursoIAInteractivoV3Preview } from './pages/CursoIAInteractivoV3Preview'
 import { CalificacionesAlumno } from './pages/CalificacionesAlumno'
 import { GradebookMaestro } from './pages/GradebookMaestro'
 import { GestionUsuarios } from './pages/GestionUsuarios'
@@ -75,6 +76,7 @@ function App() {
 
                     {/* ── Maestro ── */}
                     <Route path="/maestro" element={<RoleGuard allowedRoles={['maestro']}><AppLayout><MaestroDashboard /></AppLayout></RoleGuard>} />
+                    <Route path="/maestro/curso-ia-v3/preview" element={<RoleGuard allowedRoles={['maestro']}><AppLayout><CursoIAInteractivoV3Preview /></AppLayout></RoleGuard>} />
                     <Route path="/maestro/cursos" element={<RoleGuard allowedRoles={['maestro']}><AppLayout><CursosMaestro /></AppLayout></RoleGuard>} />
                     <Route path="/maestro/curso/:id/editar" element={<RoleGuard allowedRoles={['maestro']}><AppLayout><CursoEditorWrapper /></AppLayout></RoleGuard>} />
                     <Route path="/maestro/grupos" element={<RoleGuard allowedRoles={['maestro']}><AppLayout><GruposAdmin /></AppLayout></RoleGuard>} />
@@ -86,6 +88,7 @@ function App() {
                     <Route path="/admin" element={<RoleGuard allowedRoles={['admin']}><AppLayout><AdminDashboard /></AppLayout></RoleGuard>} />
                     <Route path="/admin/usuarios" element={<RoleGuard allowedRoles={['admin']}><AppLayout><GestionUsuarios /></AppLayout></RoleGuard>} />
                     <Route path="/admin/grupos" element={<RoleGuard allowedRoles={['admin']}><AppLayout><GruposAdmin /></AppLayout></RoleGuard>} />
+                    <Route path="/admin/curso-ia-v3/preview" element={<RoleGuard allowedRoles={['admin']}><AppLayout><CursoIAInteractivoV3Preview /></AppLayout></RoleGuard>} />
                     <Route path="/admin/cursos" element={<RoleGuard allowedRoles={['admin']}><AppLayout><CursosMaestro /></AppLayout></RoleGuard>} />
                     <Route path="/admin/curso/:id/editar" element={<RoleGuard allowedRoles={['admin']}><AppLayout><CursoEditorWrapper /></AppLayout></RoleGuard>} />
                     <Route path="/admin/calificaciones" element={<RoleGuard allowedRoles={['admin']}><AppLayout><GradebookMaestro /></AppLayout></RoleGuard>} />
