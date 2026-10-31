@@ -48,6 +48,13 @@ export function CursosMaestro() {
                     <p className="text-graphite/50 text-sm mt-1">{misCursos.length} curso{misCursos.length !== 1 ? 's' : ''}</p>
                 </div>
                 <div className="flex gap-2">
+                    <Link
+                        to={user?.rol === 'admin' ? '/admin/curso-ia-v3/preview' : '/maestro/curso-ia-v3/preview'}
+                        className="btn-secondary gap-2 text-xs sm:text-sm"
+                        title="Revisar la nueva metodología de curso sin modificar producción"
+                    >
+                        <BookOpen className="w-4 h-4" /> Vista previa IA v3
+                    </Link>
                     {/* SP2: AI Course Generator */}
                     <button
                         onClick={() => setShowAIGenerator(true)}
