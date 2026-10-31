@@ -102,7 +102,9 @@ Para cada criterio, el maestro registra puntos otorgados, breve justificación y
 
 ## Integración: NO modificar producción
 
-El archivo de datos se exporta como `cursoIAInteractivoV3`, `bloquesIAInteractivoV3` y `mapaDidacticoIAInteractivoV3`. **No se importa** en `App.tsx`, no se habilita en una ruta, no reemplaza el seed v2, no activa cargas de Firestore ni realiza una migración automática. Está marcado `publicado: false`.
+El archivo de datos se exporta como `cursoIAInteractivoV3`, `bloquesIAInteractivoV3` y `mapaDidacticoIAInteractivoV3`. Se conecta **únicamente a una vista previa local** mediante rutas protegidas `/maestro/curso-ia-v3/preview` y `/admin/curso-ia-v3/preview`; no reemplaza el seed v2, no crea documentos en Firestore ni ejecuta migraciones. Los campos del simulador guardan solo en el estado temporal de la vista previa. El curso permanece `publicado: false` y las rutas del alumno no se modifican.
+
+El instructor puede abrir la vista previa desde el botón **«Vista previa IA v3»** en la página «Mis cursos» (en la rama de trabajo, después de ejecutar la aplicación localmente). Es una simulación del recorrido con componentes de la plataforma, **no una prueba de guardado real**. El caso ético y el evaluador de prompts están desactivados en este modo para evitar escrituras/llamadas remotas.
 
 Para convertirlo en curso pilotable:
 
